@@ -1,5 +1,26 @@
 .content{
     padding-bottom: 80px;
+    min-height: 700px;
+}
+
+*{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;        
+}
+
+.container{
+    padding-top: 30px;
+}
+
+.title{
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+
+body{
+    min-height: 700px;
 }
 
 .login-box{
@@ -186,6 +207,7 @@ body{
             padding: 8px 12px;
             font-size: 0.8em;
             font-weight: bold;
+            border:none;
         }
 
 .orange-bg{
@@ -295,10 +317,18 @@ body{
         position: relative;
         margiN: 0;
     }
-        .barang-list .barang-box{
+    .barang-noscroll{
+        display: flex;
+        flex-flow: row wrap;
+        margiN: 0;
+        overflow-x: hidden;
+        justify-content: space-between;
+    }
+        .barang-box{
             flex: 1;
             margin: 10px;
-            width: 100px;
+            max-width: 140px;
+            width: 140px;
         }
 
         .barang-box a{
@@ -306,11 +336,12 @@ body{
             flex-flow: column nowrap;            
         }
             .barang-box .image-box{
-                width: 100px;                
-                height: 100px;
+                width: 140px;                
+                height: 140px;
                 overflow: hidden;
                 background-color: #333;
-                text-align: left;                
+                text-align: left;   
+                position: relative;             
             }
                 .image-box img{
                     position: absolute;
@@ -328,7 +359,41 @@ body{
             }
             .barang-box a p{
                 margin-left: 5px;
-                font-size: 0.8em;
+                font-size: 1em;
                 color: #555;
                 text-decoration: none;
             }
+
+        .barang-box .image-box p{
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 5px 8px;
+            background-color: #FF5D36;
+            color: white;
+            font-size: 0.8em;
+        }
+
+        .barang-box .image-box .harga{
+            display: flex;
+            flex-flow: row nowrap;
+            margin-top: 15px;
+            justify-content: flex-start;
+        }
+            .harga .harga-palsu{
+                margin-top: 10px;
+                font-size: 1em;     
+                margin-bottom: 0;                           
+            }
+            .harga .harga-asli{
+                flex:1;                
+                font-size: 0.8em;
+                color: #ccc;
+                text-decoration: line-through;
+            }   
+
+
+.orange{
+    color: #FF5D36;
+}
+

@@ -1,0 +1,105 @@
+.nav-list .biaya{
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: left;
+    flex: 1;        
+    margin-left: 10px;    
+}
+
+    .biaya h4{
+        font-size: 1em;
+        font-weight: normal;
+        color: #555;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+        .biaya p{
+            color: #333;
+            font-size: 1.1em;
+            margin-top: 0;
+        }
+
+.beli-button{
+    margin-right: 10px;
+    font-size: 1em;
+}
+
+.modul{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;        
+    display: flex;    
+    z-index: 9999;    
+    transform: translateY(1000px);
+    transition: all 0.3s ease-out;
+}
+.modul .layout{
+    width: 1000%;
+    height: 1000%;
+    positioN: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: rgba(0,0,0,0.3);
+    opacity: 0;              
+    transitioN: all .8s ease-out;
+    border-radius: 50%;
+}
+.modul-active{    
+    transform: translateY(0);    
+}
+.modul-active .layout{
+    opacity: 1;
+}
+    .modul form{
+        margin: auto;
+        display: flex;
+        flex-flow: column nowrap;        
+        width: 80%;
+        border-radius: 5px;
+        background-color: white;      
+        padding-bottom: 15px;  
+        z-index: 1;
+        position: relative;        
+    }
+        .modul form .form-box{
+            display: flex;
+            flex-flow: column nowrap;
+            flex: 1;
+            margiN: 10px;
+            padding: 0 30px;
+        }
+
+        form .form-title{
+            width: 100%;
+            background-color: #FF5D36;            
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+            .form-title h4{
+                font-size: 1.2em;                
+                color: white;
+            }
+    
+        .form-box label{
+            color: #555;
+        }
+        .form-box select{
+            padding: 10px;
+        }
+
+        .form-box p{
+            color: #888;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .form-box textarea{
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            min-height: 100px;
+        }
