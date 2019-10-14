@@ -3,11 +3,8 @@
 
 @section('content')
     <div class="orange-bg">
-<<<<<<< HEAD
     </div>    
-=======
     </div>
->>>>>>> b38227b0317063aaa2ff1acc430cb9172eb712d5
     <div class="header-container">
         <div class="saldo-box box">
             <div class="box-head">
