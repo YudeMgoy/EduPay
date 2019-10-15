@@ -49,23 +49,23 @@
                 </div>
                 <div class="form-box">
                     <label for="">Metode</label>
-                    <select name="metode" id="">
+                    <select name="metode" id="metode">
                         <option value="Saldo">Saldo</option>
                         <option value="COD">COD</option>
                     </select>
                 </div>
 
-                <div class="form-box saldo">
+                <div class="form-box saldo" id="saldo">
                     <label for="">Saldo Kamu</label>
                     <p class="saldo-text">Rp 50.000,00</p>
                 </div>
 
-                <div class="form-box cod">
+                <div class="form-box cod" id="cod">
                     <label for="">Ketemuan Dimana</label>
                     <textarea name="" id=""></textarea>
                 </div>
                 <div class="form-box">
-                        <button class="button">BELI</button>
+                        <button class="button">BAYAR</button>
                 </div>                
             </form>
         </div>
@@ -73,8 +73,29 @@
 
 <script>
 modul = document.getElementById("beli-modul");
+
 function beliModul(){
     modul.classList.toggle("modul-active");
 }
+</script>
+
+<script>
+$("#saldo").show();
+$("#cod").hide();
+$(document).ready(function(){    
+    $('#metode').on('change', function() {
+        if ( this.value == 'Saldo')      
+        {
+            $("#saldo").show();
+            $("#cod").hide();
+        }
+        else
+        {
+            $("#saldo").hide();
+            $("#cod").show();
+        }
+    });
+});                    
+
 </script>
 @endsection

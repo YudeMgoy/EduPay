@@ -397,3 +397,7 @@ body{
     color: #FF5D36;
 }
 
+.display-none{
+    display: none !important;
+}
+

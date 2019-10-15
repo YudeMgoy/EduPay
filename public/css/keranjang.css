@@ -41,7 +41,7 @@
     positioN: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%) scale(0);
     background-color: rgba(0,0,0,0.3);
     opacity: 0;              
     transitioN: all .8s ease-out;
@@ -51,6 +51,7 @@
     transform: translateY(0);    
 }
 .modul-active .layout{
+    transform : translate(-50%,-50%) scale(1);
     opacity: 1;
 }
     .modul form{
