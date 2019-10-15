@@ -3,9 +3,37 @@
     Profile
 @endsection
 @section('content')
-<h3>Profile</h3>
+    <div class="top-container">
+        <div class="img-box">
+            <img src="https://asset-a.grid.id/crop/0x0:0x0/700x465/photo/2019/02/01/3554994050.jpeg" alt="" class="bg-image">
+            <img src="https://asset-a.grid.id/crop/0x0:0x0/700x465/photo/2019/02/01/3554994050.jpeg" alt="">
+        </div>
 
-<a href="{{url('logout')}}">Logout</a>
+        <h4>Lucinta Luna</h4>
+        <p>12**7</p>
+    </div>
+
+    <div class="bottom-container">
+        <div class="bottom-box">
+            <a href="">Pengaturan</a>            
+        </div>
+
+        <div class="bottom-box">
+            <a href="">Saldo</a>            
+        </div>
+
+        <div class="bottom-box">
+            <a href="{{url('list/pesanan')}}">Pesanan</a>       
+        </div>
+
+        <div class="bottom-box">
+            <a href="{{url('list/pesanan')}}">Promo</a>       
+        </div>
+
+        <div class="bottom-box">
+            <a class="orange" href="{{url('logout')}}">Keluar</a>
+        </div>
+    </div>
+
 <br>
-<a href="{{url('list/pesanan')}}">list Pesanan mu</a>
 @endsection
