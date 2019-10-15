@@ -3,7 +3,6 @@
 
 @section('content')
     <div class="orange-bg">
-    </div>    
     </div>
     <div class="header-container">
         <div class="saldo-box box">
