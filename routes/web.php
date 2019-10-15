@@ -24,12 +24,13 @@ Route::get('logout','HomeController@logout');
 Route::post('edit/keranjang','BeliController@EditKeranjang');
 Route::get('list/barang','BeliController@ListBarang')->name('jualan');
 Route::get('keranjang','BeliController@IsiKeranjang')->name('viewkeranjang');
-Route::post('add/keranjang','BeliController@MasukanBarang')->name('keranjang');
+Route::post('add/keranjang/{id}','BeliController@MasukanBarang')->name('keranjang');
 Route::get('hapus/barang/{id}','BeliController@DeleteListBarang');
 Route::get('hapus/keranjang/list','BeliController@CancelBeli');
 Route::post('prosess/beli','BeliController@Prosess');
 Route::get('list/pesanan','BeliController@listPesan');
 Route::get('detail/pesanan/{id}','BeliController@detailprosess');
+Route::get('detail/barang/{id}', 'BeliController@detailBarang');
 // Route::middleware('CekRole')->group(function () {
 
 //     Route::get('add/list/barang','ManageBarangController@add');

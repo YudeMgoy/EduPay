@@ -364,7 +364,7 @@ body{
                 text-decoration: none;
             }
 
-        .barang-box .image-box p{
+        .image-box p{
             position: absolute;
             top: 0;
             right: 0;
@@ -401,3 +401,100 @@ body{
     display: none !important;
 }
 
+
+
+/* DETAIL */
+
+.detail-container{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+    .detail-container .image-box{
+        width: 100%;
+        min-height: 350px;        
+        position: relative;
+    }
+        .image-box img{
+            min-width: 400px;
+            z-index:-1;
+            width: 100%;
+            min-height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%)            ;
+        }
+
+        .image-box .diskon-detail{  
+            font-size: 1.2em;
+            padding-left: 10px;
+            padding-bottom: 10px;
+        }
+
+
+.bottom-nav form{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+form .nav-list{
+    height: 100%;
+}
+    .bottom-nav .no-padding{
+        padding: 0;
+    }
+    .no-padding input{
+        height: 45px;
+        border-radius: 5px;
+        border: 1px solid #bbb;
+        padding: 5px;
+        width: 100%;
+    }
+    .no-padding .button{
+        font-size: 0.7em;
+        height: 45px;
+        padding: 5px 10px;        
+        margin-left: 10px;
+    }
+    .diskon{
+        color: white !important;
+    }
+
+.detail-container .info-box h3{
+    padding: 15px;
+    background-color: #FF5D36;
+    color: white;
+    margin-bottom:0;
+}
+
+.detail-container .info-box .harga{
+    padding: 10px;
+    padding-left: 15px;
+    background-color: #FF7A5B;
+    margin-top: 0;
+    display: flex;    
+    flex-flow: row nowrap;
+}
+    .detail-container .info-box .harga p{
+        margin: auto;
+        color:white;
+    }
+    .detail-container .info-box .harga .harga-asli{
+        margin-left: 10px;
+        color: #ddd;
+    }
+
+.deskripsi-box{
+    padding: 15px;
+    margin-top: 20px;
+}
+    .deskripsi-box h4{
+        color: #555;
+        padding: 10px 0;
+        border-bottom: 1px solid #FF5D36;
+        padding-bottom: 20px;
+    }
+    .deskripsi-box p{
+        color: #555;
+    }

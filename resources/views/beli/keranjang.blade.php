@@ -17,29 +17,34 @@
         </h3>
         @if (session()->has('status'))
             <div class="alert alert-success">
-                <strong>Success!</strong> {{session('status')}}
+                <strong>Sukses!</strong> {{session('status')}}
             </div>                        
         @endif
-        @forelse ($item as $collection)
-            <div class="row">
-                <div class="card">
-                    <div class="card-body">
-                    <form method="POST" action="{{url('edit/keranjang')}}">
-                        @csrf
-                        <h3>{{$collection->get_barang->nama_barang}}</h3>
-                        <input type="number" name="jumlah_barang" id="" value="{{$collection->jumlah_barang}}">
-                        <input type="hidden" name="id" value="{{$collection->id}}">
-                        <input type="hidden">
-                        <p>{{$collection->harga_barang}}<p>
-                            <button type="submit">edit</button>
-                            <a href="{{url('hapus/barang')}}/{{$collection->id}}">Hapus</a>
-                    </form>
+        <div class="keranjang-container">
+        @forelse ($item as $collection)            
+            <div class="keranjang-box">
+                <a class="x" href="{{url('hapus/barang')}}/{{$collection->id}}">X</a>
+                <div class="keranjang-body">
+                    <div class="img-box">
+                        <img src="https://cf.shopee.co.id/file/1a0c7b4e1ab64fb01a4eb0ffc7eef194" alt="">
                     </div>
+
+                    <div class="right-box">
+                        <h4>{{$collection->get_barang->nama_barang}}</h4>
+                        <form method="POST" action="{{url('edit/keranjang')}}">
+                            @csrf                        
+                            <input type="number" name="jumlah_barang" id="" value="{{$collection->jumlah_barang}}">
+                            <input type="hidden" name="id" value="{{$collection->id}}">                            
+                            <button type="submit" class="button">Edit</button>                                
+                        </form>
+                        <p>Total Harga : {{$collection->harga_barang}}<p>
+                    </div>                                        
                 </div>
-            </div>
+            </div>            
         @empty
             <h5>Oops keranjang kosong lurr! <a  class=" orange"href="{{url('/')}}">Ayo belanja!</a></h5>
         @endforelse    
+        </div>  
 
         <div class="form modul" id="beli-modul">            
             <div class="layout" onclick="beliModul()"></div>

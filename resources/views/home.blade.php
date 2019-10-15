@@ -49,7 +49,7 @@
                 <div class="barang-list">
                     @foreach ($list as $item)
                     <div class="barang-box">
-                        <a href="">                                                        
+                        <a href="{{url("detail/barang/$item->id")}}">                                                        
                             <div class="image-box">
                                 <p class="diskon">50%</p>
                                 <img src="" alt="">

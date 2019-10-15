@@ -24,11 +24,12 @@ class BeliController extends Controller
             'lists' => $list,
         ]);
     }
-    public function MasukanBarang(Request $req)
+    public function MasukanBarang(Request $req, $id)
     {
         $this->validate($req, [
-            'jumlah_barang' => 'required'
+            'jumlah_barang' => 'required|min:1'
         ]);
+
         $barang = listBarang::find($req->id);
         $check = Keranjang::where('id_barang', $barang->id)
                             ->where('transaksi_id', NULL)
@@ -39,7 +40,7 @@ class BeliController extends Controller
                                 ->first();
             $keranjang->jumlah_barang += $req->jumlah_barang;
             $keranjang->harga_barang += $req->jumlah_barang * $barang->harga_barang;
-            session()->flash('status', 'Berhasil Menambahkan Barang ke Trolli');            
+            session()->flash('status', 'Berhasil Menambahkan Barang ke keranjang');            
             $keranjang->update();
         }
         else{
@@ -48,10 +49,11 @@ class BeliController extends Controller
             $keranjang->jumlah_barang = $req->jumlah_barang;
             $keranjang->harga_barang = $barang->harga_barang * $req->jumlah_barang;            
             $keranjang->pembeli_id = Auth::user()->id;
-            session()->flash('status', 'Berhasil Menambahkan Barang ke Trolli'); 
+            session()->flash('status', 'Berhasil Menambahkan Barang ke keranjang'); 
             $keranjang->save();
         }        
-        return redirect(url('list/barang'));
+
+        return redirect('keranjang');
     }
     public function EditKeranjang(Request $req){
         if($req->jumlah_barang == 0){
@@ -156,6 +158,11 @@ class BeliController extends Controller
         return view('beli.detail_pesanan',[
             'detail'=> $data
         ]);
+    }
+
+    public function detailBarang($id){
+        $barang = listBarang::find($id);        
+        return view('barang.detailbarang', compact('barang'));
     }
     
 }
