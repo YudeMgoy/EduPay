@@ -13,4 +13,13 @@ class GudangController extends Controller
             'list'=>$data
         ]);
     }
+
+    public function dikemas(Request $req){
+
+
+    }
+
+    public function dikirim(){
+
+    }
 }

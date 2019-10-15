@@ -29,5 +29,6 @@
                     Total Bayar :   {{$detail->total_harga}}
                 </h6>
     </div>
+    <a href="">Di terima</a>
 </div>
 @endsection

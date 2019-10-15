@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <div class="container">
-    <h3 class="title">SEMBAKO</h3>
+    <h3 class="title">List Barang</h3>
             @if (session()->has('status'))
                 <div class="alert alert-success">
                     <strong>Success!</strong> {{session('status')}}
@@ -13,7 +13,7 @@
     <div class="barang-noscroll">
         @foreach ($lists as $item)
             <div class="barang-box">
-                <a href="">                                                        
+                <a href="{{url("detail/barang/$item->id")}}">                                                        
                     <div class="image-box">
                         <p class="diskon">50%</p>
                         <img src="" alt="">
@@ -24,46 +24,8 @@
                         <p class="harga-asli">Rp {{$item->harga_barang}},00</p>
                     </div>                            
                 </a>                
-            </div> 
-            <div class="barang-box">
-                    <a href="">                                                        
-                        <div class="image-box">
-                            <p class="diskon">50%</p>
-                            <img src="" alt="">
-                        </div>
-                        <h3>{{str_limit($item->nama_barang,16)}}</h3>
-                        <div class="harga">                                
-                            <p class="harga-palsu">Rp {{$item->harga_barang/2}},00</p>
-                            <p class="harga-asli">Rp {{$item->harga_barang}},00</p>
-                        </div>                            
-                    </a>                
-                </div> 
-                <div class="barang-box">
-                        <a href="">                                                        
-                            <div class="image-box">
-                                <p class="diskon">50%</p>
-                                <img src="" alt="">
-                            </div>
-                            <h3>{{str_limit($item->nama_barang,16)}}</h3>
-                            <div class="harga">                                
-                                <p class="harga-palsu">Rp {{$item->harga_barang/2}},00</p>
-                                <p class="harga-asli">Rp {{$item->harga_barang}},00</p>
-                            </div>                            
-                        </a>                
-                    </div> 
-                    <div class="barang-box">
-                            <a href="">                                                        
-                                <div class="image-box">
-                                    <p class="diskon">50%</p>
-                                    <img src="" alt="">
-                                </div>
-                                <h3>{{str_limit($item->nama_barang,16)}}</h3>
-                                <div class="harga">                                
-                                    <p class="harga-palsu">Rp {{$item->harga_barang/2}},00</p>
-                                    <p class="harga-asli">Rp {{$item->harga_barang}},00</p>
-                                </div>                            
-                            </a>                
-                        </div>    
+            </div>
+        @endforeach  
         </div>
             {{-- <div class="product-grid">
                 <div class="product-image">
@@ -95,7 +57,6 @@
                 </div>
             </div> --}}
         </div>
-        @endforeach
     </div>
 </div>
 <hr>

@@ -38,6 +38,7 @@ return array(
     'App\\kategori' => $baseDir . '/app/kategori.php',
     'App\\keranjang' => $baseDir . '/app/keranjang.php',
     'App\\listBarang' => $baseDir . '/app/listBarang.php',
+    'App\\pay' => $baseDir . '/app/pay.php',
     'App\\status' => $baseDir . '/app/status.php',
     'App\\transaksi' => $baseDir . '/app/transaksi.php',
     'BeyondCode\\DumpServer\\DumpServerCommand' => $vendorDir . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',

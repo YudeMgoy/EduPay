@@ -21,6 +21,16 @@
                 }}
                 /kg
                 <br>
+                <h6>Metode Bayar :</h6>
+                {{
+                    $item->get_pay->pay
+                }}
+                <br>
+                <h6>Status :</h6>
+                {{
+                    $item->get_status->status
+                }}
+                <br>
                 <h6>
                     Jumlah Barang : {{
                         $data->jumlah_barang

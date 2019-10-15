@@ -5,8 +5,8 @@
 <nav class="bottom-nav">
     <div class="nav-list">
         <div class="nav-box biaya">
-            <h4>Total</h4>
-            <p>Rp 50.000,00</p>
+            <h4>Total {{$harga}}</h4>
+            <p></p>
         </div>        
         <a href="#" onclick="beliModul()" class="beli-button button">BELI</a>        
     </div>
@@ -42,32 +42,37 @@
                 </div>
             </div>            
         @empty
-            <h5>Oops keranjang kosong lurr! <a  class=" orange"href="{{url('/')}}">Ayo belanja!</a></h5>
+            <h5>Oops keranjang kosong lurr! <a  class=" orange"href="{{url('/list/barang')}}">Ayo belanja!</a></h5>
         @endforelse    
         </div>  
 
         <div class="form modul" id="beli-modul">            
             <div class="layout" onclick="beliModul()"></div>
-            <form action="">
+            <form action="{{url('prosess/beli')}}" method="POST">
+                @csrf
                 <div class="form-title">
                     <h4>Ayo Beli Lurr!</h4>
                 </div>
                 <div class="form-box">
                     <label for="">Metode</label>
-                    <select name="metode" id="metode">
-                        <option value="Saldo">Saldo</option>
-                        <option value="COD">COD</option>
+                    <select name="pay" id="metode">
+                        @foreach ($pay as $i)
+                        <option value="{{$i->int}}">{{$i->pay}}</option>
+                        @endforeach
                     </select>
                 </div>
-
                 <div class="form-box saldo" id="saldo">
                     <label for="">Saldo Kamu</label>
-                    <p class="saldo-text">Rp 50.000,00</p>
+                    <p class="saldo-text">Rp {{Auth::user()->saldo}}</p>
                 </div>
 
                 <div class="form-box cod" id="cod">
                     <label for="">Ketemuan Dimana</label>
-                    <textarea name="" id=""></textarea>
+                    <textarea name="alamat_kelas" id=""></textarea>
+                </div>
+                <div class="form-box cod" id="cod">
+                    <label for="">No Whatsapp mu</label>
+                    <input type="number" name="no_wa" id="">
                 </div>
                 <div class="form-box">
                         <button class="button">BAYAR</button>

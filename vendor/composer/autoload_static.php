@@ -412,6 +412,7 @@ class ComposerStaticInit68dbc5009eec2cc5c0164b3be45d996a
         'App\\kategori' => __DIR__ . '/../..' . '/app/kategori.php',
         'App\\keranjang' => __DIR__ . '/../..' . '/app/keranjang.php',
         'App\\listBarang' => __DIR__ . '/../..' . '/app/listBarang.php',
+        'App\\pay' => __DIR__ . '/../..' . '/app/pay.php',
         'App\\status' => __DIR__ . '/../..' . '/app/status.php',
         'App\\transaksi' => __DIR__ . '/../..' . '/app/transaksi.php',
         'BeyondCode\\DumpServer\\DumpServerCommand' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',

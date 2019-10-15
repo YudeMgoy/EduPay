@@ -9,7 +9,7 @@
             <br>
             dipesan pada : {{$item->created_at}}
             <br>
-            Status       : {{$item->status}}
+            Status       : {{$item->get_status->status}}
             <br>
             <a href="{{url('detail/pesanan')}}/{{$item->id}}">Lihat Detail</a>
         </div>

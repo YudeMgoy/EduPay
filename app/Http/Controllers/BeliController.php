@@ -8,6 +8,7 @@ use Auth;
 use App\listBarang;
 use App\Transaksi;
 use App\User;
+use App\pay;
 
 
 class BeliController extends Controller
@@ -81,6 +82,7 @@ class BeliController extends Controller
 
     public function DeleteListBarang($id)
     {
+        session()->flash('status', 'Barang Di Hapus');
         $all = Keranjang::find($id);
         $all->delete();
         return redirect(url('keranjang'));
@@ -101,29 +103,25 @@ class BeliController extends Controller
         {
             $total_harga += $keranjangs[$i]->harga_barang;           
         }
-        
-
         // CLEAR TRANSAKSI CACHE
         // Transaksi::where('id_gudang', NULL)
         //         ->delete();
         $transaksi = new Transaksi;
         $transaksi->pembeli_id = Auth::user()->id;
-        $transaksi->paymen = $req->paymen;
+        $transaksi->paymen = $req->pay;
         $transaksi->alamat_kelas = $req->alamat_kelas;
-        $transaksi->no_wa = 12123;
+        $transaksi->status = 0;
+        $transaksi->no_wa = $req->no_wa;
         $transaksi->id_transaksi =  $randstring;     
         $transaksi->total_harga = $total_harga;
         $transaksi->save();
         $transaksi2 = Transaksi::where('pembeli_id', Auth::user()->id)
                                 ->orderBy('id', 'DESC')->first();
-
         for ($i=0;$i<count($keranjangs);$i++)
         {            
             $keranjangs[$i]->transaksi_id = $transaksi2->id;
             $keranjangs[$i]->save();
         }
-
-
         $data = [
             'barang' => $keranjangs,
             'transaksi' => $transaksi2
@@ -137,11 +135,20 @@ class BeliController extends Controller
         return redirect(url('list/pesanan'));
     }
     public function IsiKeranjang(){
+        $bayar = pay::all();
         $keranjang = Keranjang::where('pembeli_id',Auth::user()->id)
                                 ->where('transaksi_id',NULL)
                                 ->get();
+        $total_harga = 0;
+        
+        for ($i=0;$i<count($keranjang);$i++)
+        {
+            $total_harga += $keranjang[$i]->harga_barang;           
+        }
         return view('beli.keranjang',[
-            'item' => $keranjang
+            'item' => $keranjang,
+            'pay' => $bayar,
+            'harga' =>$total_harga
         ]);
     }
     public function listPesan(){

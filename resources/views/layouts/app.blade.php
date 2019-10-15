@@ -73,7 +73,33 @@
                     </a>
                 </div>
                 @else
-                    
+                <div class="nav-box">
+                    <a href="{{url('/')}}">
+                        <img src="{{asset("img/home.png")}}" alt="">
+                        <p>Home</p>
+                    </a>
+                </div>
+
+                <div class="nav-box">
+                    <a href="{{url('gudang/list')}}">
+                        <img src="{{asset("img/history.png")}}" alt="">
+                        <p>List Pesanan</p>
+                    </a>                    
+                </div>
+                
+                <div class="nav-box">
+                    <a href="{{url('keranjang')}}">
+                        <img src="{{asset("img/keranjang.png")}}" alt="">
+                        <p>Keranjang</p>
+                    </a>                    
+                </div>
+
+                <div class="nav-box">
+                    <a href="{{url('akun')}}">
+                        <img src="{{asset("img/akun.png")}}" alt="">
+                        <p>Akun</p>
+                    </a>
+                </div>
                 @endif
                 @endif
             </div>
