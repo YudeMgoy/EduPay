@@ -9,7 +9,7 @@
                 <div class="card-body">
                     @if (session()->has('status'))
                     <div class="alert alert-success">
-                        <strong>Success!</strong> {{session('status')}}
+                        <strong>Sukses!</strong> {{session('status')}}
                     </div>                        
                     @endif
 

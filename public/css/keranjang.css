@@ -90,6 +90,8 @@
         }
         .form-box select{
             padding: 10px;
+            border: 1px solid #ddd;
+            background-color: white;
         }
 
         .form-box p{

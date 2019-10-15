@@ -57,7 +57,7 @@
                     <label for="">Metode</label>
                     <select name="pay" id="metode">
                         @foreach ($pay as $i)
-                        <option value="{{$i->int}}">{{$i->pay}}</option>
+                            <option value="{{$i->int}}">{{$i->pay}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -94,7 +94,7 @@ $("#saldo").show();
 $("#cod").hide();
 $(document).ready(function(){    
     $('#metode').on('change', function() {
-        if ( this.value == 'Saldo')      
+        if ( this.value == '1')      
         {
             $("#saldo").show();
             $("#cod").hide();

@@ -32,26 +32,30 @@ class ManageBarangController extends Controller
     }
     public function create(Request $req){
 
-        if ($req->img) {
-            // Get image file
-            $image = $req->img;
-            // Make a image name based on user name and current timestamp
-            $name = str_slug($req->nama).'_'.time();
-            // Define folder path
-            $folder = '/uploads/images/';
-            // Make a file path where image will be stored [ folder path + file name + file extension]
-            $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
-            // Upload image
-            $this->uploadOne($image, $folder, 'public', $name);
-        }
-            $list = new listBarang();
-            $list->nama_barang = $req->nama;
-            $list->kategori = $req->kategori;
-            $list->img = $filePath;
-            $list->harga_barang = $req->harga;
-            $list->save();
-            session()->flash('status', 'Berhasil Insert Barang');
-            return redirect()->back();
+        $this->validate($req, [
+            'img' => 'required',
+            'kategori' => 'required',
+            'harga' => 'required',
+        ], [
+            'Gambar Harus Terisi',
+            'Kategori Harus Terisi',
+            'Harga Harus Terisi',
+        ]);
+
+        $file = $req->file('img');     
+        $extension = $file->getClientOriginalExtension();          
+        $newName = uniqid().'.'.$extension;
+        $dir = "upload/img/";
+        $upload = $file->move($dir, $newName);
+        
+        $list = new listBarang();
+        $list->nama_barang = $req->nama;
+        $list->kategori = $req->kategori;
+        $list->img = $dir.$newName;
+        $list->harga_barang = $req->harga;
+        $list->save();
+        session()->flash('status', 'Berhasil Insert Barang');
+        return redirect()->back();
     }
 
     public function hapus($id){

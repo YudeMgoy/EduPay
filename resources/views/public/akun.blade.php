@@ -9,8 +9,8 @@
             <img src="https://asset-a.grid.id/crop/0x0:0x0/700x465/photo/2019/02/01/3554994050.jpeg" alt="">
         </div>
 
-        <h4>Lucinta Luna</h4>
-        <p>12**7</p>
+        <h4>{{Auth::user()->name}}</h4>
+        <p>{{Auth::user()->nis}}</p>
     </div>
 
     <div class="bottom-container">

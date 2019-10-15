@@ -18,7 +18,7 @@
     <div class="detail-container">
         <div class="image-box">
             <p class="diskon-detail">50%</p>
-            <img src="https://cf.shopee.co.id/file/1a0c7b4e1ab64fb01a4eb0ffc7eef194" alt="">
+            <img src="{{asset($barang->img)}}" alt="">
         </div>
 
         <div class="info-box">

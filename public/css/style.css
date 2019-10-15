@@ -339,7 +339,6 @@ body{
                 width: 140px;                
                 height: 140px;
                 overflow: hidden;
-                background-color: #333;
                 text-align: left;   
                 position: relative;             
             }
@@ -347,7 +346,7 @@ body{
                     position: absolute;
                     toP: 50%;
                     left: 50%;
-                    transforM: translate(-50%,-50%,);
+                    transform: translate(-50%,-50%);
                     width: 110%;                    
                 }
             .barang-box a h3{
@@ -423,7 +422,8 @@ body{
             min-height: 100%;
             top: 50%;
             left: 50%;
-            transform: translate(-50%,-50%)            ;
+            transform: translate(-50%,-50%)  ;
+            position: absolute;          
         }
 
         .image-box .diskon-detail{  
@@ -500,7 +500,24 @@ form .nav-list{
     }
 
 
+a{
+    text-decoration: none !important;
+}
 
+.button{
+    color: white !important;
+}
+
+a:active{
+    text-decoration: none !important;
+    color: #FF7A5B !important;
+}
+
+
+a:active .harga-asli, a:active .harga-palsu,a:active h3{
+    text-decoration: none !important;
+    color: #FF7A5B !important;
+}
 
 .back{
     position: fixed;

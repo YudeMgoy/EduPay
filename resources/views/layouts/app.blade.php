@@ -14,7 +14,10 @@
     <link rel="stylesheet" href="{{asset('css/profil.css')}}">
 </head>
 
-<body>        
+<body>     
+    
+    @include('layouts.error')
+    
         <nav class="bottom-nav">
             <div class="nav-list">
                 @if (Auth::user()->role == 1)
@@ -24,6 +27,7 @@
                         <p>Home</p>
                     </a>
                 </div>
+                
 
                 <div class="nav-box">
                     <a href="">

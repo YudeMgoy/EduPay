@@ -52,7 +52,7 @@
                         <a href="{{url("detail/barang/$item->id")}}">                                                        
                             <div class="image-box">
                                 <p class="diskon">50%</p>
-                                <img src="" alt="">
+                                <img src="{{asset($item->img)}}" alt="">
                             </div>
                             <h3>{{str_limit($item->nama_barang,16)}}</h3>
                             <div class="harga">                                
