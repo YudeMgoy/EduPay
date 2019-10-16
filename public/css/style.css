@@ -396,6 +396,10 @@ body{
     color: #FF5D36;
 }
 
+.orange:hover{
+    color: #FF7A5B;
+}
+
 .display-none{
     display: none !important;
 }
@@ -542,5 +546,5 @@ a:active .harga-asli, a:active .harga-palsu,a:active h3{
 
 .bg-orange{
     background-color: #FF5D36;
-    color: white;
+    color: white;    
 }

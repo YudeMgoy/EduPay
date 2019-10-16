@@ -185,3 +185,112 @@
             margin-toP: 10px;
             font-size: 0.8em;
         }
+
+
+
+
+
+
+
+
+/* GUDANG LIST */
+.list-pesanan{
+    position: relative;
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: column nowrap;
+    width: 100%;
+}
+    .list-pesanan .pesanan-box{
+        flex: 1;
+        margiN: 15px;
+    }
+
+    .pesanan-box .pesanan-header{
+        width: 100%;
+        padding: 10px;
+        background-color: #FF5D36;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .pesanan-header h4{
+        font-size: 1.2em;        
+        margin: auto;
+        margin-left: 0;
+    }
+        .pesanan-header i{
+            margin: auto;
+            margin-right: 0;
+        }
+
+        .pesanan-header i:hover{
+            cursor: pointer;            
+        }
+
+    .pesanan-body{
+        width: 100%;           
+        position: relative;
+        display: none;
+    }
+
+    .pesanan-body-active{
+        display: block !important;
+    }
+
+    .barang-pesanan-list{
+        display: flex;
+        positioN: relative;
+        flex-flow: column nowrap;    
+        justify-content: flex-start;   
+        border-bottom: 1px solid #ddd;
+    }
+        .barang-pesanan-list .barang-pesanan-box .bottom{
+            flex: 1;
+            margiN: 5px 0;
+            display: flex;
+            position: relative;
+            justify-content: space-between;
+            width: 100%;
+        }
+            .barang-pesanan-box h4{
+                flex: 1;
+                font-size: 1em;
+                color: #555;
+            }
+
+            .barang-pesanan-box p{
+                color: #888;
+            }
+
+        .barang-pesanan-list .barang-pesanan-box{
+            width: 100%;
+            flex: 1;
+            padding: 0 10px;            
+        }
+
+
+        .pesanan-footer{
+            padding: 0 10px;
+            margin-top: 10px;
+            position: relative;
+            width: 100%;
+        }
+
+        .pesanan-footer .status{
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+        }
+            .status p{
+                font-weight: normal;
+                font-size: 1em;
+            }
+
+        .pesanan-footer .bayar{
+            display: flex;
+            justify-content: space-between;
+        }
