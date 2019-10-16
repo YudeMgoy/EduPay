@@ -33,11 +33,13 @@ class BeliController extends Controller
 
         $barang = listBarang::find($req->id);
         $check = Keranjang::where('id_barang', $barang->id)
+                            ->where('pembeli_id',Auth::user()->id)
                             ->where('transaksi_id', NULL)
                             ->get();
         if(count($check)>0)
         {
             $keranjang = Keranjang::where('id_barang', $barang->id)
+                                ->where('pembeli_id',Auth::user()->id)
                                 ->first();
             $keranjang->jumlah_barang += $req->jumlah_barang;
             $keranjang->harga_barang += $req->jumlah_barang * $barang->harga_barang;
@@ -110,7 +112,7 @@ class BeliController extends Controller
         $transaksi->pembeli_id = Auth::user()->id;
         $transaksi->paymen = $req->pay;
         $transaksi->alamat_kelas = $req->alamat_kelas;
-        $transaksi->status = 0;
+        $transaksi->status = 4;
         $transaksi->no_wa = $req->no_wa;
         $transaksi->id_transaksi =  $randstring;     
         $transaksi->total_harga = $total_harga;

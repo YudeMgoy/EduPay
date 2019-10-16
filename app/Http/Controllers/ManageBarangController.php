@@ -31,12 +31,11 @@ class ManageBarangController extends Controller
         ]);
     }
     public function create(Request $req){
-
         $this->validate($req, [
             'img' => 'required',
             'kategori' => 'required',
             'harga' => 'required',
-        ], [
+        ],[
             'Gambar Harus Terisi',
             'Kategori Harus Terisi',
             'Harga Harus Terisi',
@@ -100,7 +99,6 @@ class ManageBarangController extends Controller
     public function editview($id){
         $data = listBarang::find($id);
         $option = kategori::all(); 
-
         return view('admin.edit',[
             'collection'=> $option,
             'data' => $data

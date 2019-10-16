@@ -25,10 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = listBarang::all();
+        $data = listBarang::paginate(5);
+        $sembako = ListBarang::where('kategori',1)->paginate(5);
         if (Auth::user()) {
             return view('home',[
-                'list'=> $data
+                'list'=> $data,
+                'sembako'=> $sembako
             ]);
         } else {
             return view('auth.login');
@@ -36,11 +38,11 @@ class HomeController extends Controller
         
     }
     public function akun(){
+
         return view('public.akun');
     }
     public function logout(){
         Auth::logout();
-
         return view('auth.login');
     }
 

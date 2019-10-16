@@ -26,9 +26,8 @@
                 <a class="x" href="{{url('hapus/barang')}}/{{$collection->id}}">X</a>
                 <div class="keranjang-body">
                     <div class="img-box">
-                        <img src="https://cf.shopee.co.id/file/1a0c7b4e1ab64fb01a4eb0ffc7eef194" alt="">
+                        <img src="{{asset($collection->get_barang->img)}}" alt="">
                     </div>
-
                     <div class="right-box">
                         <h4>{{$collection->get_barang->nama_barang}}</h4>
                         <form method="POST" action="{{url('edit/keranjang')}}">
