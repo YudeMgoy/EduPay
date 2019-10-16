@@ -1,6 +1,5 @@
 @extends('layouts.app')
-@section('content')
-    <h3>Section List Barang gudang</h3>
+@section('content')    
     <div class="conteiner-fluid">
     <table class="table">
                 @if (session()->has('status'))
@@ -8,7 +7,7 @@
                         <strong>Success!</strong> {{session('status')}}
                     </div>                        
                 @endif
-        <thead class="thead-dark">
+        <thead class="bg-orange">
             <tr>
             <th scope="col">No</th>
             <th scope="col">Nama Barang</th>
@@ -18,16 +17,16 @@
         <tbody>
             @foreach ($barang as $item)
             <tr>
-            <th scope="row">{{$loop->iteration}}</th>
-            <td>{{$item->nama_barang}}</td>
-            <td>
-                <a href="{{url('edit/view')}}/{{$item->id}}">edit</a>
-                <a href="{{url('delete/item')}}/{{$item->id}}">hapus</a>
-            </td>
+                <th scope="row">{{$loop->iteration}}</th>
+                <td>{{$item->nama_barang}}</td>
+                <td>
+                    <a href="{{url('edit/view')}}/{{$item->id}}" class="orange">Edit</a>
+                    <a href="{{url('delete/item')}}/{{$item->id}}" class="orange">Hapus</a>
+                </td>
             </tr>
-            @endforeach
+            @endforeach                     
         </tbody>
-        </table>
-        <a class="btn btn-outline-primary" href="{{url('add/list')}}" role="button">tambah</a>
+            <td colspan="3" style="text-align:center"><a class="btn button" href="{{url('add/list')}}" role="button">+ TAMBAH BARANG</a></td>    
+        </table>        
         </div>
 @endsection

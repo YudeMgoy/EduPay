@@ -432,6 +432,13 @@ body{
             padding-bottom: 10px;
         }
 
+        .img-box img{
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
 
 .bottom-nav form{
     height: 100%;
@@ -532,3 +539,8 @@ a:active .harga-asli, a:active .harga-palsu,a:active h3{
         position: relative;
         opacity: 0.3;
     }
+
+.bg-orange{
+    background-color: #FF5D36;
+    color: white;
+}

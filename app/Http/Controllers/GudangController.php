@@ -7,11 +7,14 @@ use App\Transaksi;
 class GudangController extends Controller
 {
     public function index(){
-        $data = Transaksi::where('id_gudang',NULL)
+        $transaksis = Transaksi::where('id_gudang',NULL)
+                            ->with('get_barang')
+                            ->with('get_keranjang')
+                            ->with('get_pay')
+                            ->with('get_status')
                             ->get();
-        return view('gudang.gudanglist',[
-            'list'=>$data
-        ]);
+        
+        return view('gudang.gudanglist',compact('transaksis'));        
     }
 
     public function dikemas(Request $req){

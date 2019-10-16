@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="form-group row forgot-box">                    
-                    <button type="submit" class="btn">
+                    <button type="submit" class="btn button">
                         {{ __('Login') }}
                     </button>
 
