@@ -20,6 +20,11 @@
                 <strong>Sukses!</strong> {{session('status')}}
             </div>                        
         @endif
+        @if (session()->has('error'))
+            <div class="alert alert-danger">
+                <strong>Oopss!!</strong> {{session('error')}}
+            </div>                        
+        @endif
         <div class="keranjang-container">
         @forelse ($item as $collection)            
             <div class="keranjang-box">

@@ -60,7 +60,7 @@ class BeliController extends Controller
     }
     public function EditKeranjang(Request $req){
         if($req->jumlah_barang == 0){
-            session()->flash('status', 'Kalau Beli minimal 1 LOL');
+            session()->flash('error', 'Kalau Beli minimal 1 LOL');
             return redirect(url('keranjang'));
         }
         $keranjang = Keranjang::find($req->id);
@@ -98,7 +98,6 @@ class BeliController extends Controller
         $keranjangs = Keranjang::where('pembeli_id', Auth()->user()->id)
                                 ->where('transaksi_id', NULL)
                                 ->get();
-
         $total_harga = 0;
         
         for ($i=0;$i<count($keranjangs);$i++)
@@ -108,21 +107,32 @@ class BeliController extends Controller
         // CLEAR TRANSAKSI CACHE
         // Transaksi::where('id_gudang', NULL)
         //         ->delete();
-        $transaksi = new Transaksi;
-        $transaksi->pembeli_id = Auth::user()->id;
-        $transaksi->paymen = $req->pay;
-        $transaksi->alamat_kelas = $req->alamat_kelas;
-        $transaksi->status = 4;
-        $transaksi->no_wa = $req->no_wa;
-        $transaksi->id_transaksi =  $randstring;     
-        $transaksi->total_harga = $total_harga;
-        $transaksi->save();
-        $transaksi2 = Transaksi::where('pembeli_id', Auth::user()->id)
-                                ->orderBy('id', 'DESC')->first();
-        for ($i=0;$i<count($keranjangs);$i++)
-        {            
-            $keranjangs[$i]->transaksi_id = $transaksi2->id;
-            $keranjangs[$i]->save();
+        if($req->pay == 1){
+            if(Auth::user()->saldo < $total_harga){
+                session()->flash('error', 'Saldo Anda Tidak Cukup');
+                return redirect()->back();
+            }
+            else{
+                $pembeli = Auth::user();
+                $pembeli->saldo -= $total_harga;
+                $pembeli->save();
+                $transaksi = new Transaksi;
+                $transaksi->pembeli_id = Auth::user()->id;
+                $transaksi->paymen = $req->pay;
+                $transaksi->alamat_kelas = "Tempat COD";
+                $transaksi->status = 4;
+                $transaksi->no_wa = $req->no_wa;
+                $transaksi->id_transaksi =  $randstring;     
+                $transaksi->total_harga = $total_harga;
+                $transaksi->save();
+                $transaksi2 = Transaksi::where('pembeli_id', Auth::user()->id)
+                                        ->orderBy('id', 'DESC')->first();
+                for ($i=0;$i<count($keranjangs);$i++)
+                {            
+                    $keranjangs[$i]->transaksi_id = $transaksi2->id;
+                    $keranjangs[$i]->save();
+                }
+            }
         }
         $data = [
             'barang' => $keranjangs,
