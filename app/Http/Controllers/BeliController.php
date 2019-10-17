@@ -134,6 +134,25 @@ class BeliController extends Controller
                 }
             }
         }
+        else{
+
+                $transaksi = new Transaksi;
+                $transaksi->pembeli_id = Auth::user()->id;
+                $transaksi->paymen = $req->pay;
+                $transaksi->alamat_kelas = $req->alamat_kelas;
+                $transaksi->status = 4;
+                $transaksi->no_wa = $req->no_wa;
+                $transaksi->id_transaksi =  $randstring;     
+                $transaksi->total_harga = $total_harga;
+                $transaksi->save();
+                $transaksi2 = Transaksi::where('pembeli_id', Auth::user()->id)
+                                        ->orderBy('id', 'DESC')->first();
+                for ($i=0;$i<count($keranjangs);$i++)
+                {            
+                    $keranjangs[$i]->transaksi_id = $transaksi2->id;
+                    $keranjangs[$i]->save();
+                }
+        }
         $data = [
             'barang' => $keranjangs,
             'transaksi' => $transaksi2
