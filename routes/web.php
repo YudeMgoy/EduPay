@@ -14,6 +14,7 @@
 Route::get('/','HomeController@index');
 Auth::routes();
 Route::get('akun','HomeController@akun');
+Route::view('topup', 'public.topup');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['']], function () {
     
@@ -51,4 +52,6 @@ Route::middleware('auth')->group(function(){
     Route::middleware('isGudang')->group(function(){
         Route::get('gudang/list','GudangController@index');
     });
+
+    
 });

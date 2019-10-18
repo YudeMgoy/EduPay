@@ -548,3 +548,33 @@ a:active .harga-asli, a:active .harga-palsu,a:active h3{
     background-color: #FF5D36;
     color: white;    
 }
+
+
+.container-top-up{
+    width: 100%;
+    padding: 20px;    
+    height: 500px;
+    position: relative;
+}
+    .container-top-up h5{
+        margin-top: 60px;
+        text-align:center;
+        color: #555;
+    }
+    .container-top-up p{
+        color: #555;
+        margin-top: 30px;
+        font-size: 1.1em;
+    }
+        .container-top-up ul li{
+            list-style: circle;
+            margin: 10px 0;
+        }    
+
+        .container-top-up img{
+            width: 100%;            
+            positioN: absolute;
+            bottom: -210px;
+            left: 50%;
+            transforM: translateX(-50%);
+        }

@@ -1,8 +1,8 @@
 .nav-list .biaya{
     display: flex;
     flex-flow: column nowrap;
-    text-align: left;
-    flex: 1;        
+    flex: 1;  
+    text-align: left;      
     margin-left: 10px;    
 }
 
@@ -22,6 +22,8 @@
 .beli-button{
     margin-right: 10px;
     font-size: 1em;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .modul{
@@ -58,7 +60,7 @@
         margin: auto;
         display: flex;
         flex-flow: column nowrap;        
-        width: 80%;
+        width: 90%;
         border-radius: 5px;
         background-color: white;      
         padding-bottom: 15px;  
@@ -94,7 +96,7 @@
             background-color: white;
         }
 
-        .form-box p{
+        .form-box .saldo-text{
             color: #888;
             border: 1px solid #ddd;
             border-radius: 5px;
@@ -124,7 +126,6 @@
         positioN: absolute;
         top: 5px;
         right: 10px;
-        color: #FF5D36;
     }
 
     .keranjang-body{
@@ -150,7 +151,8 @@
 
 
         .keranjang-body .right-box{
-            padding: 5px 15px;
+            padding: 5px 15px;  
+            max-width: 200px;                      
             flex: 1;
         }
         .right-box h4{
@@ -160,7 +162,10 @@
         .right-box form{
             display: flex;
             flex-flow: row nowrap;
-            justify-content: flex-start;
+            justify-content: space-between;
+            position: relative;
+            padding: 5px;   
+            padding-left: 0;            
             width: 100%;
             margin-top: 15px;
         }        
@@ -169,14 +174,16 @@
             border-radius: 5px;
             border: 1px solid #bbb;
             padding: 5px;
+            flex: 1;
         }
 
         .right-box form input{
             flex: 1;
-            max-width: 70px;  
+            max-width: 60%;
             border-radius: 3px; 
         }
         .right-box form button{
+            flex: 1;
             margin-left: 5px;
         }
 
@@ -294,3 +301,27 @@
             display: flex;
             justify-content: space-between;
         }
+
+
+.bayar{
+    display: flex;
+    flex-flow: column nowrap;
+    position: relative;
+}
+    .bayar-box{                
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content:  space-between;
+    }
+
+    .bayar .total{
+        border-bottoM: 1px solid #ddd;
+        padding-bottoM: 5px;
+    }
+
+    .bayar-box p{
+        font-size: 0.9em;
+        color: #555;
+        margin: 0;                
+    }
+    
