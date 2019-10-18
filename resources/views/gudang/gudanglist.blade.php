@@ -22,27 +22,15 @@
                                 <p>{{ $keranjang->get_barang->harga_barang }}/kg ({{ $keranjang->jumlah_barang }})</p>
                             </div>                                                        
                         @endforeach --}}
+                        @foreach ($transaksi->get_keranjang as $keranjang)
                         <div class="barang-pesanan-box">
-                            <h4>Air Mineral</h4>
+                            <h4>{{$keranjang->get_barang->nama_barang}}</h4>
                             <div class="bottom">
-                                <p>Rp 1.500,00/pcs (3)</p>
+                                <p>{{number_format($keranjang->get_barang->harga_barang, 2, ',','.')}} ({{$keranjang->jumlah_barang}})</p>
                                 <a href="#" class="orange">Kosong</a>
                             </div>                                                            
                         </div>
-                        <div class="barang-pesanan-box">
-                            <h4>Air Mineral</h4>                                
-                            <div class="bottom">
-                                <p>Rp 1.500,00/pcs (3)</p>
-                                <a href="#" class="orange">Kosong</a>
-                            </div>
-                        </div>
-                        <div class="barang-pesanan-box">
-                            <h4>Air Mineral</h4>                                
-                            <div class="bottom">
-                                <p>Rp 1.500,00/pcs (3)</p>
-                                <a href="#" class="orange">Kosong</a>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>                                    
                 </div>
 

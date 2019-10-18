@@ -19,6 +19,9 @@
         <div class="bottom-box">
             <a href="{{url('list/pesanan')}}">Promo</a>       
         </div>
+        <div class="bottom-box">
+            <a href="{{url('topup/admin')}}">TopUp</a>       
+        </div>
         @else
             @if (Auth::user()->role == 2)
         <div class="bottom-box">

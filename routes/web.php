@@ -41,6 +41,8 @@ Route::get('detail/barang/{id}', 'BeliController@detailBarang');
 
 Route::middleware('auth')->group(function(){
     Route::middleware('CekRole')->group(function(){
+        Route::post('topup/prosess','TopupController@prosess')->name('topup');
+        Route::get('topup/admin','TopupController@topup');
         Route::get('view/all/barang','ManageBarangController@index');
         Route::get('add/list','ManageBarangController@add');
         Route::post('add/barang','ManageBarangController@create')->name('addbarang');
