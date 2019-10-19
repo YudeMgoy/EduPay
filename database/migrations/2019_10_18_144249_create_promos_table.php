@@ -19,6 +19,8 @@ class CreatePromosTable extends Migration
             $table->string('judul');
             $table->unsignedInteger('user_id');
             $table->longText('isi');
+            $table->string('kode_promo');
+            $table->double('nominal_promo');
             $table->date('tanggal_berakhir');
             $table->timestamps();
 

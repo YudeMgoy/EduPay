@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Transaksi;
+use Auth;
 class GudangController extends Controller
 {
     public function index(){
+        if (Auth::user()->role == 4) {
+            $transaksis = Transaksi::where('status',1)->get();
+            return view('gudang.gudanglist',compact('transaksis'));
+        } else {
         $transaksis = Transaksi::where('id_gudang',NULL)
                             ->with('get_barang')
                             ->with('get_keranjang')
@@ -14,15 +19,29 @@ class GudangController extends Controller
                             ->with('get_status')
                             ->get();
         
-        return view('gudang.gudanglist',compact('transaksis'));        
+        return view('gudang.gudanglist',compact('transaksis'));  
+        }
+        
     }
 
-    public function dikemas(Request $req){
+    public function dikemas($id){
 
+        $data = Transaksi::find($id);
+        $data->status = 1;
+        $data->id_gudang = Auth::user()->id;
 
+        $data->save();
+        return redirect()->back();
     }
 
-    public function dikirim(){
+    public function dikirim($id){
+
+        $data = Transaksi::find($id);
+        $data->status = 2;
+
+        $data->save();
+        session()->flash('status', 'Silahkan Antar Barang');
+        return redirect()->back();
 
     }
 }

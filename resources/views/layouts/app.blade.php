@@ -13,9 +13,7 @@
     <link rel="stylesheet" href="{{asset('css/keranjang.css')}}">
     <link rel="stylesheet" href="{{asset('css/profil.css')}}">
 </head>
-
-<body>     
-    
+<body>
     @include('layouts.error')
     
         <nav class="bottom-nav">
@@ -85,7 +83,6 @@
                         <p>Home</p>
                     </a>
                 </div>
-
                 <div class="nav-box">
                     <a href="{{url('gudang/list')}}">
                         <img src="{{asset("img/history.png")}}" alt="">

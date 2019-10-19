@@ -15,7 +15,7 @@ class isGudang
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->role == 3 ){
+        if(Auth::user()->role == 3 || Auth::user()->role == 4){
             return $next($request);
         }
         else {

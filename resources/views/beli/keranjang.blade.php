@@ -73,11 +73,17 @@
                     <label for="">Saldo Kamu</label>
                     <p style="margin-bottom:0" class="saldo-text">Rp {{Auth::user()->saldo}}</p>
                 </div>
+                
+                <div class="form-box cod" id="saldo">
+                    <label for="">Ketemuan Dimana</label>
+                    <textarea name="alamat_kelas" id=""></textarea>
+                </div>
 
                 <div class="form-box cod" id="cod">
                     <label for="">Ketemuan Dimana</label>
                     <textarea name="alamat_kelas" id=""></textarea>
                 </div>
+
                 <div class="form-box cod">
                     <label for="">Kode Promo</label>
                     <input type="text" name="kode_promo" id="">

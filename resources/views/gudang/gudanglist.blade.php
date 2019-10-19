@@ -8,6 +8,11 @@
         @php
             $index =0;
         @endphp
+                    @if (session()->has('status'))
+                    <div class="alert alert-success">
+                        <strong>Sukses!</strong> {{session('status')}}
+                    </div>                        
+                    @endif
         @foreach ($transaksis as $transaksi)        
             <div class="pesanan-box">
                 <div class="pesanan-header" onclick="showBody(<?php echo $index ?>)">
@@ -28,9 +33,11 @@
                             <div class="bottom">
                                 <p>{{number_format($keranjang->get_barang->harga_barang, 2, ',','.')}} ({{$keranjang->jumlah_barang}})</p>
                                 <a href="#" class="orange">Kosong</a>
-                            </div>                                                            
+                            </div>
+                                                                                        
                         </div>
                         @endforeach
+                        
                     </div>                                    
                 </div>
 
@@ -42,6 +49,12 @@
                     <div class="bayar">
                         <h6>Total Bayar :  </h6>
                         <h6>Rp {{number_format($transaksi->total_harga, 2, ',','.')}} </h6>
+                        @if ($transaksi->status == 4)
+                         <a href="{{url('dikemas')}}/{{$transaksi->id}}" class="orange">Dikemas</a>   
+                        @else
+                         <a href="{{url('dikirim')}}/{{$transaksi->id}}" class="orange">Di Kirim</a>
+                        @endif
+                        
                     </div>                    
                 </div>
             </div>
