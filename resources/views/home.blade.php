@@ -33,7 +33,8 @@
 
     <div class="belanja-container">
         <div class="search-box">
-            <form action="" method="POST">
+            <form action="{{url('search/barang')}}" method="POST">
+                @csrf
                 <input type="text" name="search" placeholder="Ayo cari sesuatu">
                 <button class="button">Search</button>                
             </form>
@@ -42,7 +43,7 @@
         <div class="barang-container">
             <div class="barang-wrapper">
                 <div class="barang-header">
-                    <h4>Sembako</h4>
+                    <h4>Rekomendasi</h4>
                     <a href="" class="lihat">Lihat Semua</a>
                 </div>
 
@@ -67,64 +68,25 @@
             <div class="barang-wrapper">
                 <div class="barang-header">
                     <h4>Sembako</h4>
-                    <a href="" class="lihat">Lihat Semua</a>
+                    <a href="{{url('list/barang/1')}}" class="lihat">Lihat Semua</a>
                 </div>
 
                 <div class="barang-list">
+                    @foreach ($sembako as $i)
                     <div class="barang-box">
-                        <a href="">
+                        <a href="{{url("detail/barang/$item->id")}}">                                                        
                             <div class="image-box">
-                                <img src="" alt="">
+                                <p class="diskon">50%</p>
+                                <img src="{{asset($item->img)}}" alt="">
                             </div>
-            
-                            <h3>Nama</h3>
-                            <p>Rp 3.000,00</p>
+                            <h3>{{str_limit($i->nama_barang,16)}}</h3>
+                            <div class="harga">                                
+                                <p class="harga-palsu">Rp {{$i->harga_barang/2}},00</p>
+                                <p class="harga-asli">Rp {{$i->harga_barang}},00</p>
+                            </div>                            
                         </a>                
                     </div>
-
-                    <div class="barang-box">
-                        <a href="">
-                            <div class="image-box">
-                                <img src="" alt="">
-                            </div>
-            
-                            <h3>Nama</h3>
-                            <p>Rp 3.000,00</p>
-                        </a>                
-                    </div>
-
-                    <div class="barang-box">
-                        <a href="">
-                            <div class="image-box">
-                                <img src="" alt="">
-                            </div>
-            
-                            <h3>Nama</h3>
-                            <p>Rp 3.000,00</p>
-                        </a>                
-                    </div>
-
-                    <div class="barang-box">
-                        <a href="">
-                            <div class="image-box">
-                                <img src="" alt="">
-                            </div>
-            
-                            <h3>Nama</h3>
-                            <p>Rp 3.000,00</p>
-                        </a>                
-                    </div>
-
-                    <div class="barang-box">
-                        <a href="">
-                            <div class="image-box">
-                                <img src="" alt="">
-                            </div>
-            
-                            <h3>Nama</h3>
-                            <p>Rp 3.000,00</p>
-                        </a>                
-                    </div>
+                    @endforeach
                 </div>                
             </div> 
 

@@ -25,6 +25,12 @@ class BeliController extends Controller
             'lists' => $list,
         ]);
     }
+    public function listkategori($id){
+        $data = ListBarang::where('kategori',$id)->get();
+        return view('beli.listbarang',[
+            'lists' => $data
+        ]);
+    }
     public function MasukanBarang(Request $req, $id)
     {
         $this->validate($req, [
@@ -120,7 +126,7 @@ class BeliController extends Controller
                 $transaksi->pembeli_id = Auth::user()->id;
                 $transaksi->paymen = $req->pay;
                 $transaksi->alamat_kelas = "Tempat COD";
-                $transaksi->status = 4;
+                $transaksi->status = 1;
                 $transaksi->no_wa = $req->no_wa;
                 $transaksi->id_transaksi =  $randstring;     
                 $transaksi->total_harga = $total_harga;
@@ -201,6 +207,16 @@ class BeliController extends Controller
     public function detailBarang($id){
         $barang = listBarang::find($id);        
         return view('barang.detailbarang', compact('barang'));
+    }
+
+    public function search(Request $req){
+
+        $data = ListBarang::where('nama_barang','like','%'.$req->search.'%')->get();
+
+        return view('beli.listbarang',[
+            'lists'=>$data
+        ]);
+
     }
     
 }

@@ -23,7 +23,9 @@ Route::group(['middleware' => ['']], function () {
 Route::get('logout','HomeController@logout');
 
 Route::post('edit/keranjang','BeliController@EditKeranjang');
+Route::post('search/barang','BeliController@search');
 Route::get('list/barang','BeliController@ListBarang')->name('jualan');
+Route::get('list/barang/{id}','BeliController@Listkategori');
 Route::get('keranjang','BeliController@IsiKeranjang')->name('viewkeranjang');
 Route::post('add/keranjang/{id}','BeliController@MasukanBarang')->name('keranjang');
 Route::get('hapus/barang/{id}','BeliController@DeleteListBarang');
