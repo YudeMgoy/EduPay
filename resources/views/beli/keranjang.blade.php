@@ -73,11 +73,6 @@
                     <label for="">Saldo Kamu</label>
                     <p style="margin-bottom:0" class="saldo-text">Rp {{Auth::user()->saldo}}</p>
                 </div>
-                
-                <div class="form-box cod" id="saldo">
-                    <label for="">Ketemuan Dimana</label>
-                    <textarea name="alamat_kelas" id=""></textarea>
-                </div>
 
                 <div class="form-box cod" id="cod">
                     <label for="">Ketemuan Dimana</label>
@@ -124,13 +119,12 @@ function beliModul(){
 
 <script>
 $("#saldo").show();
-$("#cod").hide();
 $(document).ready(function(){    
     $('#metode').on('change', function() {
         if ( this.value == '1')      
         {
             $("#saldo").show();
-            $("#cod").hide();
+            $("#cod").show();
         }
         else
         {

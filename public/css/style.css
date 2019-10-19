@@ -387,7 +387,7 @@ body{
             .harga .harga-asli{
                 flex:1;                
                 font-size: 0.8em;
-                color: #ccc;
+                color: #ddd !important;
                 text-decoration: line-through;
             }   
 
@@ -459,13 +459,13 @@ form .nav-list{
         height: 45px;
         border-radius: 5px;
         border: 1px solid #bbb;
-        padding: 5px;
+        padding: 5px 8px;
         width: 100%;
     }
     .no-padding .button{
-        font-size: 0.7em;
+        font-size: 0.8em;
         height: 45px;
-        padding: 5px 10px;        
+        padding: 5px 18px;        
         margin-left: 10px;
     }
     .diskon{
@@ -493,7 +493,6 @@ form .nav-list{
     }
     .detail-container .info-box .harga .harga-asli{
         margin-left: 10px;
-        color: #ddd;
     }
 
 .deskripsi-box{

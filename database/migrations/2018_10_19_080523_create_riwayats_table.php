@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePromosTable extends Migration
+class CreateRiwayatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,20 @@ class CreatePromosTable extends Migration
      */
     public function up()
     {
-        Schema::create('promos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('cover');
-            $table->string('judul');
-            $table->integer('user_id')->unsigned();
-            $table->longText('isi');
-            $table->string('kode_promo');
-            $table->double('nominal_promo');
-            $table->date('tanggal_berakhir');
+        Schema::create('riwayats', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('transaksi_id');
+            $table->string('judul');            
+            $table->string('style');
             $table->timestamps();
 
             $table->foreign('user_id')
                 ->references('id')->on('users')
+                ->onDelete('cascade');
+
+            $table->foreign("transaksi_id") 
+                ->references('id')->on('transaksis')
                 ->onDelete('cascade');
         });
     }
@@ -37,6 +38,6 @@ class CreatePromosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('promos');
+        Schema::dropIfExists('riwayats');
     }
 }

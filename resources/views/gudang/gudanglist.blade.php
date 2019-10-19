@@ -46,16 +46,15 @@
                         <p>Metode : {{ $transaksi->get_pay->pay }}</p>
                         <p class="{{$transaksi->get_status->style}}">{{ $transaksi->get_status->status }}</p>
                     </div>                    
-                    <div class="bayar">
-                        <h6>Total Bayar :  </h6>
-                        <h6>Rp {{number_format($transaksi->total_harga, 2, ',','.')}} </h6>
-                        @if ($transaksi->status == 4)
-                         <a href="{{url('dikemas')}}/{{$transaksi->id}}" class="orange">Dikemas</a>   
-                        @else
-                         <a href="{{url('dikirim')}}/{{$transaksi->id}}" class="orange">Di Kirim</a>
-                        @endif
-                        
+                    <div class="status" style="margin-bottoM: 10px;">
+                        <h6>Total Bayar</h6>
+                        <h6>Rp {{number_format($transaksi->total_harga, 2, ',','.')}} </h6>                                                
                     </div>                    
+                    @if ($transaksi->status == 4)
+                        <a href="{{url('dikemas')}}/{{$transaksi->id}}" class="orange">Kemas Sekarang</a>   
+                    @else
+                        <a href="{{url('dikirim')}}/{{$transaksi->id}}" class="orange">Kirim Sekarang</a>
+                    @endif
                 </div>
             </div>
             @php

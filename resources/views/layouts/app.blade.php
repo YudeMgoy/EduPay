@@ -57,7 +57,7 @@
                 </div>
 
                 <div class="nav-box">
-                    <a href="">
+                    <a href="{{url('riwayat')}}">
                         <img src="{{asset("img/history.png")}}" alt="">
                         <p>Riwayat</p>
                     </a>                    

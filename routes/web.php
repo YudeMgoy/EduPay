@@ -32,6 +32,9 @@ Route::post('prosess/beli','BeliController@Prosess');
 Route::get('list/pesanan','BeliController@listPesan');
 Route::get('detail/pesanan/{id}','BeliController@detailprosess');
 Route::get('detail/barang/{id}', 'BeliController@detailBarang');
+
+Route::view('riwayat', 'public.riwayat');
+Route::view('transaksi', 'beli.transaksi');
 // Route::middleware('CekRole')->group(function () {
 
 //     Route::get('add/list/barang','ManageBarangController@add');
