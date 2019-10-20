@@ -76,7 +76,7 @@
                     @foreach ($row->get_barang_data as $data)
                         
                     <div class="barang-box">
-                        <a href="">
+                        <a href="{{url('detail/barang')}}/{{$data->id}}">
                             <div class="image-box">
                                 <img src="{{$data->img}}" alt="">
                             </div>
