@@ -17,3 +17,7 @@
         <img src="{{asset('img/topupbg.png')}}" alt="" class="top-up-bg">
     </div>    
 @stop
+
+@section('link')
+    {{url('/')}}
+@endsection

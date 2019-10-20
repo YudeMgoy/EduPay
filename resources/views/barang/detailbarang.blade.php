@@ -36,3 +36,7 @@
         
     </div>
 @stop
+
+@section('link')
+    {{url('/')}}
+@endsection
