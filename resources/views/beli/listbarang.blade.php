@@ -19,7 +19,7 @@
                 <button class="button">Search</button>                
             </form>
         </div>
-        @foreach ($lists as $item)
+        @forelse ($lists as $item)
             <div class="barang-box">
                 <a href="{{url("detail/barang/$item->id")}}">                                                        
                     <div class="image-box">
@@ -33,7 +33,9 @@
                     </div>                            
                 </a>                
             </div>
-        @endforeach          
+        @empty
+            <h3>Oopps Barang tidak di temukan</h3><a href="{{url('list/barang')}}">Lihat Semua barang?</a>
+        @endforelse         
     </div>
 </div>
 <hr>

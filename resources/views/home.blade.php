@@ -44,7 +44,7 @@
             <div class="barang-wrapper">
                 <div class="barang-header">
                     <h4>Rekomendasi</h4>
-                    <a href="" class="lihat">Lihat Semua</a>
+                    <a href="{{url('list/barang')}}" class="lihat">Lihat Semua</a>
                 </div>
 
                 <div class="barang-list">
@@ -65,94 +65,33 @@
                     @endforeach
                 </div>                
             </div>            
+            @foreach ($kategori as $row)
             <div class="barang-wrapper">
                 <div class="barang-header">
-                    <h4>Sembako</h4>
-                    <a href="{{url('list/barang/1')}}" class="lihat">Lihat Semua</a>
+                    <h4>{{$row->kategori}}</h4>
+                    <a href="{{url('list/barang')}}/{{$row->int}}" class="lihat">Lihat Semua</a>
                 </div>
 
                 <div class="barang-list">
-                    @foreach ($sembako as $i)
+                    @foreach ($row->get_barang_data as $data)
+                        
                     <div class="barang-box">
-                        <a href="{{url("detail/barang/$item->id")}}">                                                        
+                        <a href="">
                             <div class="image-box">
-                                <p class="diskon">50%</p>
-                                <img src="{{asset($item->img)}}" alt="">
+                                <img src="{{$data->img}}" alt="">
                             </div>
-                            <h3>{{str_limit($i->nama_barang,16)}}</h3>
-                            <div class="harga">                                
-                                <p class="harga-palsu">Rp {{$i->harga_barang/2}},00</p>
-                                <p class="harga-asli">Rp {{$i->harga_barang}},00</p>
-                            </div>                            
+            
+                            <h3>{{str_limit($data->nama_barang,16)}}</h3>
+                            <div class="harga">
+                                <p class="harga-palsu">Rp {{$item->harga_barang/2}},00</p>
+                                <p class="harga-asli">Rp {{$item->harga_barang}},00</p>
+                            </div>
                         </a>                
                     </div>
                     @endforeach
                 </div>                
-            </div> 
-
-            <div class="barang-wrapper">
-                <div class="barang-header">
-                    <h4>Sembako</h4>
-                    <a href="" class="lihat">Lihat Semua</a>
-                </div>
-
-                <div class="barang-list">
-                    <div class="barang-box">
-                        <a href="">
-                            <div class="image-box">
-                                <img src="" alt="">
-                            </div>
-            
-                            <h3>Nama</h3>
-                            <p>Rp 3.000,00</p>
-                        </a>                
-                    </div>
-
-                    <div class="barang-box">
-                        <a href="">
-                            <div class="image-box">
-                                <img src="" alt="">
-                            </div>
-            
-                            <h3>Nama</h3>
-                            <p>Rp 3.000,00</p>
-                        </a>                
-                    </div>
-
-                    <div class="barang-box">
-                        <a href="">
-                            <div class="image-box">
-                                <img src="" alt="">
-                            </div>
-            
-                            <h3>Nama</h3>
-                            <p>Rp 3.000,00</p>
-                        </a>                
-                    </div>
-
-                    <div class="barang-box">
-                        <a href="">
-                            <div class="image-box">
-                                <img src="" alt="">
-                            </div>
-            
-                            <h3>Nama</h3>
-                            <p>Rp 3.000,00</p>
-                        </a>                
-                    </div>
-
-                    <div class="barang-box">
-                        <a href="">
-                            <div class="image-box">
-                                <img src="" alt="">
-                            </div>
-            
-                            <h3>Nama</h3>
-                            <p>Rp 3.000,00</p>
-                        </a>                
-                    </div>
-                </div>                
-            </div> 
+            </div>
+            @endforeach 
         </div>            
     </div>
 @endsection

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\listBarang;
-
+use App\kategori;
 class HomeController extends Controller
 {
     /**
@@ -26,11 +26,13 @@ class HomeController extends Controller
     public function index()
     {
         $data = listBarang::paginate(5);
+        $kategori = kategori::all(); 
         $sembako = ListBarang::where('kategori',1)->paginate(5);
         if (Auth::user()) {
             return view('home',[
                 'list'=> $data,
-                'sembako'=> $sembako
+                'sembako'=> $sembako,
+                'kategori'=> $kategori
             ]);
         } else {
             return view('auth.login');
