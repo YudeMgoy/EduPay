@@ -66,8 +66,9 @@
         padding-bottom: 15px;  
         z-index: 1;
         overflow: scroll;
+        overflow-x: hidden;
         max-height: 600px;
-        margin-top: 20px;
+        margin-top: 40px;
         position: relative;        
     }
         .modul form .form-box{
@@ -187,7 +188,31 @@
             border: 1px solid #bbb;
             padding: 5px;
             flex: 1;
+            color: #555;
         }
+
+        form select{
+            color: #555;
+            border: 1px solid #bbb;
+        }
+
+        form .multiform{
+            display: flex;
+            justify-content: space-between;                        
+        }
+
+            form .multiform .input{
+                margin: 0 5px;
+                flex: 1;
+            }
+                .multiform input{
+                    max-width: 150px;
+                }
+                .multiform select
+                {
+                    max-width: 80px;
+                    margin-left: 0;
+                }
 
         .right-box form input{
             flex: 1;

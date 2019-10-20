@@ -1,12 +1,15 @@
 @extends('layouts.nonav')
 
+@section('link')
+    {{url('home')}}
+@stop
+
 @section('content')
 
 <nav class="bottom-nav">
     <div class="nav-list">
         <div class="nav-box biaya">
-            <h4>Total Rp {{number_format($harga,2,',','.')}}</h4>
-            <p></p>
+            <h4>Total Rp {{number_format($harga,2,',','.')}}</h4>            
         </div>        
         <a href="#" onclick="beliModul()" class="beli-button button">BELI</a>        
     </div>
@@ -78,28 +81,23 @@
                     <label for="">Ketemuan Dimana</label>
                     <textarea name="alamat_kelas" id=""></textarea>
                 </div>
-
-                <div class="form-box cod">
-                    <label for="">Kode Promo</label>
-                    <input type="text" name="kode_promo" id="">
-                </div>
                 <div class="form-box cod">
                     <label for="">No Whatsapp mu</label>
                     <input type="number" name="no_wa" id="">
                 </div>
                 
                 <div class="form-box bayar">
-                    <div class="bayar-box harga">
+                    {{-- <div class="bayar-box harga">
                         <p>Harga</p>
                         <p>Rp {{number_format($harga,2,',','.')}}</p>
                     </div>
                     <div class="bayar-box diskon">
-                        <p>Promo</p>
+                        <p>Jumlah</p>
                         <p>- Rp 5.000,00</p>
-                    </div>
+                    </div> --}}
                     <div class="bayar-box  total">
                         <p>Total</p>
-                        <p>Rp {{number_format(($harga-5000),2,',','.')}}</p>
+                        <p>Rp {{number_format($harga,2,',','.')}}</p>
                     </div>
                 </div>
                 <div class="form-box">

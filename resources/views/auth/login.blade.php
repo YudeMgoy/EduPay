@@ -3,11 +3,14 @@
     
 @endsection
 @section('content')
+<div class="splash" id="splash">
+    <img src="{{asset('img/dimon-logo-4.png')}}" alt="">
+    <p>v 0.0.1</p>
+</div>
 <div class="container">
     <div class="login-box">                
         <div class="main-title">
-            <h3>E-PAIMAN</h3>
-            <p>Belanja sambil duduk</p>
+            <img src="{{asset('img/dimon-logo.png')}}" alt="">            
         </div>
         <div class="login-body">
             <form method="POST" action="{{ route('login') }}">
@@ -55,11 +58,23 @@
                     </div>                                            
                 </div>
 
-                <div class="form-group col-md-6 row mb-0 no-account">                    
+                {{-- <div class="form-group col-md-6 row mb-0 no-account">                    
                     <a href="{{route('register')}}">Belum punya akun? Daftar yuk!</a>
-                </div>
+                </div> --}}
             </form>
         </div>
     </div>            
 </div>
+
+<script>
+let splash = document.getElementById('splash');
+
+setTimeout(function(){
+    splash.classList.add("opacity0");
+},3000);
+
+setTimeout(function(){
+    splash.classList.add('hidden');
+}, 3300);;
+</script>
 @endsection

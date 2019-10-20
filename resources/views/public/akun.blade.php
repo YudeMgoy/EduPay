@@ -10,7 +10,7 @@
         </div>
 
         <h4>{{Auth::user()->name}}</h4>
-        <p><span STYLE="font-size: 0.8em;">NIS</span> {{Auth::user()->nis}}</p>
+        <p><span STYLE="font-size: 0.8em;">ID : </span> {{Auth::user()->id_user}}</p>
         {{-- <p>ID: {{Auth::user()->id_user}}</p> --}}
     </div>
 
@@ -20,7 +20,7 @@
             <a href="{{url('list/pesanan')}}">Promo</a>       
         </div>
         <div class="bottom-box">
-            <a href="{{url('topup/admin')}}">TopUp</a>       
+            <a href="#" onclick="showModul()">Top Up</a>       
         </div>
         @else
             @if (Auth::user()->role == 2)
@@ -51,5 +51,37 @@
         </div>
     </div>
 
+    <div class="form modul" id="beli-modul">            
+        <div class="layout" onclick="showModul()"></div>
+        <form action="{{url('prosess/beli')}}" method="POST">
+            @csrf
+            <div class="form-title">
+                <h4>Top Up User!</h4>
+                <a class="x" href="#" onclick="showModul()" style="color: white !important;">X</a>
+            </div>
+
+            <div class="form-box cod">
+                <label for="">ID User</label>
+                <input type="text" name="no_wa" id="">
+            </div>
+
+            <div class="form-box cod">
+                <label for="">Jumlah</label>
+                <input type="number" name="no_wa" id="">
+            </div>
+                        
+            <div class="form-box">
+                    <button class="button">TOP UP</button>
+            </div>                
+        </form>
+    </div>    
+
+<script>
+modul = document.getElementById("beli-modul");
+
+function showModul(){
+    modul.classList.toggle("modul-active");
+}
+</script>
 <br>
 @endsection

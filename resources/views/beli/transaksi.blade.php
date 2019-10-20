@@ -1,12 +1,16 @@
 @extends('layouts.nonav')
 
+@section('link')
+    {{url('riwayat')}}
+@stop
+
 @section('content')
 <nav class="bottom-nav">
     <div class="nav-list">
         <div class="nav-box biaya">
-            <h4>Total Rp 100.000,00</h4>
-            <p></p>
+            <h4>Total Rp 100.000,00</h4>            
         </div>                
+        <a href="#" class="beli-button button">CANCEL</a>        
     </div>
 </nav>
 <div class="container">

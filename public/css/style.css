@@ -23,10 +23,34 @@ body{
     min-height: 700px;
 }
 
+.splash{
+    opacity: 1;
+    transitioN: all 0.3s;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 999999;
+    background-color: #FF5D36;
+    displaY: flex;
+}
+    .splash p{
+        positioN: absolute;
+        bottoM: 10px;
+        color: white;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .splash img{
+        width: 200px;
+        margin: auto;
+    }
+
 .login-box{
     width: 90%;
     margin-left: 5%;
-    margin-top: 100px; 
+    margin-top: 70px; 
     position: relative;
 }
 
@@ -46,10 +70,8 @@ body{
     text-align:center;
     position: relative;
 }
-    .main-title h3{
-        font-size: 2em;
-        color: #FF5D36;
-        margin-bottom: 0;
+    .main-title img{
+        width: 200px;
     }
     .main-title p{
         font-size: 1em;
@@ -250,11 +272,19 @@ body{
     width: 100%;
     positioN: relative;
 }
-    .belanja-container .search-box{
-        width: 80%;
-        margiN: 0 10%;        
+    .search-box{
+        width: 90%;
+        margiN: 0 5%;      
+    }
+
+    .barang-noscroll .search-box{
+        width: 100%;
+        margin: 0 5px;        
+        margin-top: 20px;
+        margin-bottom: 10px;
     }
         .search-box form{
+            width: 100%;
             display: flex;
             flex-flow: row nowrap;
             justify-content: space-between;
@@ -323,12 +353,22 @@ body{
         margiN: 0;
         overflow-x: hidden;
         justify-content: space-between;
+        positiON: relative;
+        width: 100%;
     }
         .barang-box{
             flex: 1;
             margin: 10px;
             max-width: 140px;
             width: 140px;
+        }
+
+        .barang-noscroll .barang-box{
+            width: 150px !important;
+            max-width: 150px !important;
+        }
+        .barang-noscroll .image-box{
+            width: 150px !important;    
         }
 
         .barang-box a{
@@ -577,3 +617,59 @@ a:active .harga-asli, a:active .harga-palsu,a:active h3{
             left: 50%;
             transforM: translateX(-50%);
         }
+
+
+
+/* PROMO */
+.banner-box{
+    width: 100%;
+    height: 300px;
+    positioN: relative;   
+    overflow:hidden; 
+}
+    .banner-box img{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        height: 100%;
+        z-index: -2;
+    }
+
+    .banner-box .layout{
+        background-color: rgba(0,0,0,.3);
+        positioN: absolute;
+        widtH: 100%;
+        height: 100%;
+        z-index: -1;        
+    }
+
+    .banner-box h4{
+        position: absolute;
+        bottom: 15px;
+        left: 15px;        
+        z-index: 1;
+        color: white;
+    }
+
+    .date-promo{
+        text-align: right;
+        color: #888;
+        padding: 15px;
+        font-size: 0.8em;
+    }
+
+
+
+.opacity0{
+    opacity: 0;
+}
+
+.hidden{
+    display: none;
+}
+
+.bg-image{
+    widtH: 500% !important;         
+    filter: blur(8px);
+}

@@ -1,10 +1,22 @@
 @extends('layouts.nonav')
+
+@section('link')
+    {{url('/')}}
+@stop
+
 @section('content')
 <div class="container">
     <h4 class="title">
             Daftar Pesanan
     </h4>
     <div class="list-pesanan">
+        <div class="search-box">
+            <form action="{{url('search/barang')}}" method="POST">
+                @csrf
+                <input type="text" name="search" placeholder="Cari pesanan">
+                <button class="button">Search</button>                
+            </form>
+        </div>
         @php
             $index =0;
         @endphp
@@ -14,7 +26,7 @@
                     </div>                        
                     @endif
         @foreach ($transaksis as $transaksi)        
-            <div class="pesanan-box">
+            <div class="pesanan-box">                
                 <div class="pesanan-header" onclick="showBody(<?php echo $index ?>)">
                     <h4>{{$transaksi->get_barang->name}}</h4>
                     <i class="fa fa-caret-down"></i>
@@ -50,10 +62,12 @@
                         <h6>Total Bayar</h6>
                         <h6>Rp {{number_format($transaksi->total_harga, 2, ',','.')}} </h6>                                                
                     </div>                    
-                    @if ($transaksi->status == 4)
-                        <a href="{{url('dikemas')}}/{{$transaksi->id}}" class="orange">Kemas Sekarang</a>   
+                    @if ($transaksi->status == 1)
+                        <a href="{{url('dikemas')}}/{{$transaksi->id}}" class="text-secondary">Kemas</a>   
+                    @elseif($transaksi->status == 2)
+                        <a href="{{url('dikirim')}}/{{$transaksi->id}}" class="text-primary">Kirim</a>
                     @else
-                        <a href="{{url('dikirim')}}/{{$transaksi->id}}" class="orange">Kirim Sekarang</a>
+                        <a href="{{url('dikirim')}}/{{$transaksi->id}}" class="text-danger">Hapus</a>
                     @endif
                 </div>
             </div>
