@@ -35,11 +35,10 @@ Route::middleware('auth')->group(function(){
     Route::get('list/pesanan','BeliController@listPesan');
     Route::get('detail/pesanan/{id}','BeliController@detailprosess');
     Route::get('detail/barang/{id}', 'BeliController@detailBarang');
-    
+    Route::get('riwayat','BeliController@riwayat');
     Route::view('promo/{id}', 'public.detailpromo');
-    
-    Route::view('riwayat', 'public.riwayat');
-    Route::view('transaksi', 'beli.transaksi');
+    Route::get('terima/barang/{id}','BeliController@terima');
+    Route::get('batal/beli/{id}','BeliController@cencelBeli');
 });
 
 Route::view('lupa', 'public.lupa');

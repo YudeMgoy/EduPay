@@ -65,13 +65,13 @@
                     <div class="status" style="margin-bottoM: 10px;">
                         <h6>Total Bayar</h6>
                         <h6>Rp {{number_format($transaksi->total_harga, 2, ',','.')}} </h6>                                                
-                    </div>                    
+                    </div>                   
                     @if ($transaksi->status == 1)
-                        <a href="{{url('dikemas')}}/{{$transaksi->id}}" class="text-secondary">Kemas</a>   
-                    @elseif($transaksi->status == 2)
-                        <a href="{{url('dikirim')}}/{{$transaksi->id}}" class="text-primary">Kirim</a>
+                        <a href="{{url('dikirim')}}/{{$transaksi->id}}" class="text-secondary">Kirim</a>   
+                    @elseif($transaksi->status == 4)
+                        <a href="{{url('dikemas')}}/{{$transaksi->id}}" class="text-danger">Hapus</a>
                     @else
-                        <a href="{{url('dikirim')}}/{{$transaksi->id}}" class="text-danger">Hapus</a>
+                        <a href="{{url('dikirim')}}/{{$transaksi->id}}" class="text-primary">Selesai</a>
                     @endif
                 </div>
             </div>

@@ -146,7 +146,7 @@ class BeliController extends Controller
                 $transaksi->pembeli_id = Auth::user()->id;
                 $transaksi->paymen = $req->pay;
                 $transaksi->alamat_kelas = $req->alamat_kelas;
-                $transaksi->status = 4;
+                $transaksi->status = 1;
                 $transaksi->no_wa = $req->no_wa;
                 $transaksi->id_transaksi =  $randstring;     
                 $transaksi->total_harga = $total_harga;
@@ -199,7 +199,7 @@ class BeliController extends Controller
     public function detailprosess($id){
         $data = Transaksi::find($id);
 
-        return view('beli.detail_pesanan',[
+        return view('beli.transaksi',[
             'detail'=> $data
         ]);
     }
@@ -218,5 +218,30 @@ class BeliController extends Controller
         ]);
 
     }
-    
+
+    public function riwayat(){
+        $data = Transaksi::where('pembeli_id',Auth::user()->id)->get();
+
+        return view('public.riwayat',[
+            'collection'=>$data
+        ]);
+    }
+
+    public function cencelBeli($id){
+
+        $data = transaksi::find($id);
+
+        $data->status = 4;
+        $data->save();
+        
+        return redirect()->back();
+
+    }
+    public function terima($id){
+        $data = Transaksi::find($id);
+        $data->status = 3;
+        $data->save();
+        
+        return redirect()->back();
+    }
 }

@@ -44,4 +44,10 @@ class GudangController extends Controller
         return redirect()->back();
 
     }
+    public function cencel(){
+        $data = Transaksi::find($id);
+        $data->delete();
+        session()->flash('status', 'Pesanan di Hapus');
+        return redirect()->back();
+    }
 }
