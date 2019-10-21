@@ -1,5 +1,9 @@
 @extends('layouts.nonav')
 
+@section('keranjang')
+    active
+@stop
+
 @section('link')
     {{url('/')}}
 @stop

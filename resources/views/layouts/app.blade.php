@@ -19,29 +19,21 @@
         <nav class="bottom-nav">
             <div class="nav-list">
                 @if (Auth::user()->role == 1)
-                <div class="nav-box">
+                <div class="nav-box @yield('home')">
                     <a href="{{url('/')}}">
                         <img src="{{asset("img/home.png")}}" alt="">
                         <p>Home</p>
                     </a>
                 </div>
-                
 
-                <div class="nav-box">
-                    <a href="">
-                        <img src="{{asset("img/history.png")}}" alt="">
-                        <p>Pesanan</p>
-                    </a>                    
-                </div>
-
-                <div class="nav-box">
+                <div class="nav-box @yield('barang')">
                     <a href="{{url('view/all/barang')}}">
                         <img src="{{asset("img/keranjang.png")}}" alt="">
-                        <p>Barang</p>
+                        <p>Kelola Barang</p>
                     </a>                    
                 </div>
 
-                <div class="nav-box">
+                <div class="nav-box @yield('akun')">
                     <a href="{{url('akun')}}">
                         <img src="{{asset("img/akun.png")}}" alt="">
                         <p>Akun</p>
@@ -49,55 +41,48 @@
                 </div>
                 @else
                 @if (Auth::user()->role == 2)
-                <div class="nav-box">
+                <div class="nav-box @yield('home')">
                     <a href="{{url('/')}}">
                         <img src="{{asset("img/home.png")}}" alt="">
                         <p>Home</p>
                     </a>
                 </div>
 
-                <div class="nav-box">
+                <div class="nav-box @yield('riwayat')">
                     <a href="{{url('riwayat')}}">
                         <img src="{{asset("img/history.png")}}" alt="">
                         <p>Riwayat</p>
                     </a>                    
                 </div>
                 
-                <div class="nav-box">
+                <div class="nav-box @yield('keranjang')">
                     <a href="{{url('keranjang')}}">
                         <img src="{{asset("img/keranjang.png")}}" alt="">
                         <p>Keranjang</p>
                     </a>                    
                 </div>
 
-                <div class="nav-box">
+                <div class="nav-box @yield('akun')">
                     <a href="{{url('akun')}}">
                         <img src="{{asset("img/akun.png")}}" alt="">
                         <p>Akun</p>
                     </a>
                 </div>
                 @else
-                <div class="nav-box">
+                <div class="nav-box @yield('home')">
                     <a href="{{url('/')}}">
                         <img src="{{asset("img/home.png")}}" alt="">
                         <p>Home</p>
                     </a>
                 </div>
-                <div class="nav-box">
+                <div class="nav-box @yield('pesanan')">
                     <a href="{{url('gudang/list')}}">
                         <img src="{{asset("img/history.png")}}" alt="">
                         <p>List Pesanan</p>
                     </a>                    
                 </div>
-                
-                <div class="nav-box">
-                    <a href="{{url('keranjang')}}">
-                        <img src="{{asset("img/keranjang.png")}}" alt="">
-                        <p>Keranjang</p>
-                    </a>                    
-                </div>
 
-                <div class="nav-box">
+                <div class="nav-box @yield('akun')">
                     <a href="{{url('akun')}}">
                         <img src="{{asset("img/akun.png")}}" alt="">
                         <p>Akun</p>

@@ -14,7 +14,10 @@
         <a href="#" onclick="beliModul()" class="beli-button button">BELI</a>        
     </div>
 </nav>
-<div class="container">
+<div class="container">  
+    @if(!count($item))  
+        <img src="{{asset('img/belanja.png')}}" alt="">
+    @endif
     <h3 class="title">
             Keranjang
         </h3>
@@ -52,7 +55,7 @@
                 </div>
             </div>            
         @empty
-            <h5>Oops keranjang kosong lurr! <a  class=" orange"href="{{url('/list/barang')}}">Ayo belanja!</a></h5>
+            <h5>Oops keranjang kosong lurr! <a  class=" orange"href="{{url('/list/barang')}}">Ayo belanja!</a></h5>            
         @endforelse    
         </div>  
 

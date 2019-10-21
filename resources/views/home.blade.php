@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('home')
+    active
+@stop
+
 
 @section('content')
     <div class="orange-bg">

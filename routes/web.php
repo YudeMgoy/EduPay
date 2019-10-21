@@ -11,34 +11,38 @@
 |
 */
 
-Route::get('/','HomeController@index');
-Auth::routes();
-Route::get('akun','HomeController@akun');
-Route::view('topup', 'public.topup');
-Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['']], function () {
     
 });
-
+Auth::routes();
 Route::get('logout','HomeController@logout');
 
-Route::post('edit/keranjang','BeliController@EditKeranjang');
-Route::post('search/barang','BeliController@search');
-Route::get('list/barang','BeliController@ListBarang')->name('jualan');
-Route::get('list/barang/{id}','BeliController@Listkategori');
-Route::get('keranjang','BeliController@IsiKeranjang')->name('viewkeranjang');
-Route::post('add/keranjang/{id}','BeliController@MasukanBarang')->name('keranjang');
-Route::get('hapus/barang/{id}','BeliController@DeleteListBarang');
-Route::get('hapus/keranjang/list','BeliController@CancelBeli');
-Route::post('prosess/beli','BeliController@Prosess');
-Route::get('list/pesanan','BeliController@listPesan');
-Route::get('detail/pesanan/{id}','BeliController@detailprosess');
-Route::get('detail/barang/{id}', 'BeliController@detailBarang');
+Route::middleware('auth')->group(function(){
+    Route::get('/','HomeController@index');
+    Route::get('akun','HomeController@akun');
+    Route::view('topup', 'public.topup');
+    Route::get('/home', 'HomeController@index')->name('home');
 
-Route::view('promo/{id}', 'public.detailpromo');
+    Route::post('edit/keranjang','BeliController@EditKeranjang');
+    Route::post('search/barang','BeliController@search');
+    Route::get('list/barang','BeliController@ListBarang')->name('jualan');
+    Route::get('list/barang/{id}','BeliController@Listkategori');
+    Route::get('keranjang','BeliController@IsiKeranjang')->name('viewkeranjang');
+    Route::post('add/keranjang/{id}','BeliController@MasukanBarang')->name('keranjang');
+    Route::get('hapus/barang/{id}','BeliController@DeleteListBarang');
+    Route::get('hapus/keranjang/list','BeliController@CancelBeli');
+    Route::post('prosess/beli','BeliController@Prosess');
+    Route::get('list/pesanan','BeliController@listPesan');
+    Route::get('detail/pesanan/{id}','BeliController@detailprosess');
+    Route::get('detail/barang/{id}', 'BeliController@detailBarang');
+    
+    Route::view('promo/{id}', 'public.detailpromo');
+    
+    Route::view('riwayat', 'public.riwayat');
+    Route::view('transaksi', 'beli.transaksi');
+});
 
-Route::view('riwayat', 'public.riwayat');
-Route::view('transaksi', 'beli.transaksi');
+Route::view('lupa', 'public.lupa');
 // Route::middleware('CekRole')->group(function () {
 
 //     Route::get('add/list/barang','ManageBarangController@add');

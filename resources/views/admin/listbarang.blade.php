@@ -1,4 +1,9 @@
 @extends('layouts.app')
+
+@section('barang')
+    active
+@stop
+
 @section('content')    
     <div class="conteiner-fluid">
     <table class="table">

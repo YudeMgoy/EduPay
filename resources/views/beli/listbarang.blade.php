@@ -3,6 +3,11 @@
 @section('title')
     List Barang
 @endsection
+
+@section('barang')
+    active
+@stop
+
 @section('content')
 <div class="container">
     <h3 class="title">List Barang</h3>

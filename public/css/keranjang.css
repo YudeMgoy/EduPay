@@ -3,15 +3,15 @@
     flex-flow: column nowrap;
     flex: 1;  
     text-align: left;      
-    margin-left: 10px;    
+    margin-left: 10px;  
 }
 
     .biaya h4{
         font-size: 1em;
         font-weight: normal;
         color: #555;
-        margin-top: 0;
-        margin-bottom: 0;
+        margin-top: auto;
+        margin-bottom: auto;
     }
         .biaya p{
             color: #333;
@@ -118,6 +118,15 @@
 .keranjang-container{
     padding: 10px;  
     position: relative;    
+}
+
+.container>img{
+    position: fixed;
+    bottom : 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    z-index: -1;
 }
     .keranjang-box{
         margin: 0;        

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('riwayat')
+    active
+@stop
+
 @section('content')
 <div class="container">
     <h3 class="title">

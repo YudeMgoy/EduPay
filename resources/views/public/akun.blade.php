@@ -1,4 +1,9 @@
 @extends('layouts.app')
+
+@section('akun')
+    active
+@stop
+
 @section('title')
     Profile
 @endsection
