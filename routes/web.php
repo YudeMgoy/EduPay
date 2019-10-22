@@ -39,6 +39,8 @@ Route::middleware('auth')->group(function(){
     Route::view('promo/{id}', 'public.detailpromo');
     Route::get('terima/barang/{id}','BeliController@terima');
     Route::get('batal/beli/{id}','BeliController@cencelBeli');
+
+    Route::view('pengaturan', 'public.pengaturan');
 });
 
 Route::view('lupa', 'public.lupa');

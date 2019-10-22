@@ -30,7 +30,7 @@
         @else
             @if (Auth::user()->role == 2)
         <div class="bottom-box">
-            <a href="">Saldo</a>
+            <a href="{{url('topup')}}">Saldo</a>
             <p>Rp.{{Auth::user()->saldo}}</p>
         </div>
         <div class="bottom-box">
@@ -41,7 +41,7 @@
             @endif
         @endif
         <div class="bottom-box">
-            <a href="">Pengaturan</a>            
+            <a href="{{url('pengaturan')}}">Pengaturan</a>            
         </div>
         <div class="bottom-box">
             <a class="orange" href="{{ route('logout') }}"
