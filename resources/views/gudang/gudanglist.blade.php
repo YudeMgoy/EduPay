@@ -14,6 +14,11 @@
             Daftar Pesanan
     </h4>
     <div class="list-pesanan">
+        @if (session()->has('status'))
+            <div class="alert alert-success">
+                <strong>Sukses!</strong> {{session('status')}}
+            </div>                        
+        @endif
         <div class="search-box">
             <form action="{{url('search/barang')}}" method="POST">
                 @csrf
@@ -23,12 +28,7 @@
         </div>
         @php
             $index =0;
-        @endphp
-                    @if (session()->has('status'))
-                    <div class="alert alert-success">
-                        <strong>Sukses!</strong> {{session('status')}}
-                    </div>                        
-                    @endif
+        @endphp                    
         @foreach ($transaksis as $transaksi)        
             <div class="pesanan-box">                
                 <div class="pesanan-header" onclick="showBody(<?php echo $index ?>)">
@@ -68,6 +68,8 @@
                     </div>                   
                     @if ($transaksi->status == 1)
                         <a href="{{url('dikirim')}}/{{$transaksi->id}}" class="text-secondary">Kirim</a>   
+                    @elseif ($transaksi->status == 2)
+                        <a href="{{url('sampai')}}/{{$transaksi->id}}" class="text-success">Sampai</a>   
                     @elseif($transaksi->status == 4)
                         <a href="{{url('dikemas')}}/{{$transaksi->id}}" class="text-danger">Hapus</a>
                     @else

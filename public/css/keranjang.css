@@ -120,12 +120,29 @@
     position: relative;    
 }
 
-.container>img{
-    position: fixed;
+.container .belum-box{
+    position: relative;
+    width: 80%;
+    margiN: 10%;
+    text-align: center;
+}
+    .belum-box h6{
+        font-size: 1.2em;
+    }
+    .belum-box p{
+        margin-bottom: 30px;
+    }
+    .belum-box a{
+        padding: 12px 15px;
+        font-size: 1em;
+    }
+
+.container .belum-box img{
+    position: relative;
     bottom : 12px;
     left: 50%;
     transform: translateX(-50%);
-    width: 300px;
+    width: 270px;
     z-index: -1;
 }
     .keranjang-box{

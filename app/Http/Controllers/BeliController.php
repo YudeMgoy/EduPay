@@ -9,6 +9,7 @@ use App\listBarang;
 use App\Transaksi;
 use App\User;
 use App\pay;
+use App\Kategori;
 
 
 class BeliController extends Controller
@@ -19,16 +20,20 @@ class BeliController extends Controller
                                 ->where('pembeli_id', Auth::user()->id)
                                 ->get();
         $list = ListBarang::all();
+        $kategori = "Rekomendasi";
 
         return view('beli.listbarang', [
             'keranjangs' => $keranjang,
             'lists' => $list,
+            'kategori' => $kategori
         ]);
     }
     public function listkategori($id){
         $data = ListBarang::where('kategori',$id)->get();
+        $kategori = Kategori::find($id)->kategori;
         return view('beli.listbarang',[
-            'lists' => $data
+            'lists' => $data,
+            'kategori' => $kategori
         ]);
     }
     public function MasukanBarang(Request $req, $id)

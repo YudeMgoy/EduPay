@@ -6,19 +6,24 @@
 
 @section('content')
 
-<nav class="bottom-nav">
-    <div class="nav-list">
-        <div class="nav-box biaya">
-            <h4>Total Rp {{number_format($harga,2,',','.')}}</h4>            
-        </div>        
-        <a href="#" onclick="beliModul()" class="beli-button button">BELI</a>        
-    </div>
-</nav>
 <div class="container">  
     @if(!count($item))  
-        <img src="{{asset('img/belanja.png')}}" alt="">
-    @endif
-    <h3 class="title">
+        <div class="belum-box">
+            <img src="{{asset('img/belanja.png')}}" alt="">
+            <h6>Oops keranjang kosong lurr!</h6>            
+            <p>Ayo belanja barang - barang dengan DIMON dengan harga yang lebih rendah</p>
+            <a  class=" button"href="{{url('/list/barang')}}">MULAI BELANJA!</a>
+        </div>        
+    @else
+        <nav class="bottom-nav">
+            <div class="nav-list">
+                <div class="nav-box biaya">
+                    <h4>Total Rp {{number_format($harga,2,',','.')}}</h4>            
+                </div>        
+                <a href="#" onclick="beliModul()" class="beli-button button">BELI</a>        
+            </div>
+        </nav>
+        <h3 class="title">
             Keranjang
         </h3>
         @if (session()->has('status'))
@@ -32,7 +37,7 @@
             </div>                        
         @endif
         <div class="keranjang-container">
-        @forelse ($item as $collection)            
+        @foreach ($item as $collection)            
             <div class="keranjang-box">
                 <a class="x orange" href="{{url('hapus/barang')}}/{{$collection->id}}">X</a>
                 <div class="keranjang-body">
@@ -53,10 +58,8 @@
                         </div>                        
                     </div>                                        
                 </div>
-            </div>            
-        @empty
-            <h5>Oops keranjang kosong lurr! <a  class=" orange"href="{{url('/list/barang')}}">Ayo belanja!</a></h5>            
-        @endforelse    
+            </div>                                
+        @endforeach 
         </div>  
 
         <div class="form modul" id="beli-modul">            
@@ -108,6 +111,7 @@
                 </div>                
             </form>
         </div>
+    @endif
 </div>
 
 <script>

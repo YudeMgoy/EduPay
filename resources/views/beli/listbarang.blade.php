@@ -10,7 +10,7 @@
 
 @section('content')
 <div class="container">
-    <h3 class="title">List Barang</h3>
+    <h3 class="title">{{$kategori}}</h3>
             @if (session()->has('status'))
                 <div class="alert alert-success">
                     <strong>Success!</strong> {{session('status')}}
@@ -33,8 +33,8 @@
                     </div>
                     <h3>{{str_limit($item->nama_barang,16)}}</h3>
                     <div class="harga">                                
-                        <p class="harga-palsu">Rp {{$item->harga_barang/2}},00</p>
-                        <p class="harga-asli">Rp {{$item->harga_barang}},00</p>
+                        <p class="harga-palsu">Rp {{number_format($item->harga_barang/2,2,',','.')}}</p>
+                        <p class="harga-asli">Rp {{number_format($item->harga_barang,2,',','.')}}</p>
                     </div>                            
                 </a>                
             </div>

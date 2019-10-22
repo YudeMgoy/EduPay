@@ -1,5 +1,9 @@
 @extends('layouts.nonav')
 
+@section('link')
+    {{url('/home')}}
+@stop
+
 @section('content')
     <div class="banner-box">
         <img src="https://i1.wp.com/www.payfazz.com/wp-content/uploads/2019/09/BLOG-Shopfazz-Kejar-Untung-Cashback.jpg?fit=1201%2C628&ssl=1" alt="" class="bg-image">

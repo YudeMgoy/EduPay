@@ -87,13 +87,8 @@
             
                             <h3>{{str_limit($data->nama_barang,16)}}</h3>
                             <div class="harga">
-<<<<<<< HEAD
                                     <p class="harga-palsu">Rp {{number_format($item->harga_barang/2,2,',','.')}}</p>
                                     <p class="harga-asli">Rp {{number_format($item->harga_barang,2,',','.')}}</p>
-=======
-                                <p class="harga-palsu">Rp {{$data->harga_barang/2}},00</p>
-                                <p class="harga-asli">Rp {{$data->harga_barang}},00</p>
->>>>>>> e62c26f12baf2b43eac54a75a11003e521a04e38
                             </div>
                         </a>                
                     </div>
