@@ -59,6 +59,12 @@
             </div>
 
             <div class="form-box cod">
+                <label for="">Deskripsi Barang</label>
+                <textarea name="" id="">                                            
+                </textarea>
+            </div>
+
+            <div class="form-box cod">
                 <label for="">Gambar</label>
                 <input type="file" name="img">
             </div>
@@ -75,7 +81,7 @@
                 </div>                
             </div>    
             <div class="form-box">
-                    <button class="button" type="submit">add</button>
+                    <button class="button" type="submit">TAMBAH</button>
             </div>                
         </form>
     </div>    

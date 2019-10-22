@@ -14,7 +14,7 @@
                 <h5>Saldo</h5>
             </div>
             <div class="box-body saldo-body">
-                <h3>Rp <div class="duit">{{Auth::user()->saldo}}</div></h3>
+                <h3>Rp <div class="duit">{{number_format(Auth::user()->saldo,2,',','.')}}</div></h3>
                 <a href="{{url("topup")}}" class="top-up button">TOP UP</a>
             </div>                    
         </div>
@@ -61,8 +61,8 @@
                             </div>
                             <h3>{{str_limit($item->nama_barang,16)}}</h3>
                             <div class="harga">                                
-                                <p class="harga-palsu">Rp {{$item->harga_barang/2}},00</p>
-                                <p class="harga-asli">Rp {{$item->harga_barang}},00</p>
+                                <p class="harga-palsu">Rp {{number_format($item->harga_barang/2,2,',','.')}}</p>
+                                <p class="harga-asli">Rp {{number_format($item->harga_barang,2,',','.')}}</p>
                             </div>                            
                         </a>                
                     </div>
@@ -87,8 +87,8 @@
             
                             <h3>{{str_limit($data->nama_barang,16)}}</h3>
                             <div class="harga">
-                                <p class="harga-palsu">Rp {{$item->harga_barang/2}},00</p>
-                                <p class="harga-asli">Rp {{$item->harga_barang}},00</p>
+                                    <p class="harga-palsu">Rp {{number_format($item->harga_barang/2,2,',','.')}}</p>
+                                    <p class="harga-asli">Rp {{number_format($item->harga_barang,2,',','.')}}</p>
                             </div>
                         </a>                
                     </div>

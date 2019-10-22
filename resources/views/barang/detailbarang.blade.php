@@ -24,8 +24,8 @@
         <div class="info-box">
             <h3>{{$barang->nama_barang}}</h3>
             <div class="harga">                                
-                <p class="harga-palsu">Rp {{$barang->harga_barang/2}},00</p>
-                <p class="harga-asli">Rp {{$barang->harga_barang}},00</p>
+                    <p class="harga-palsu">Rp {{number_format($barang->harga_barang/2,2,',','.')}}</p>
+                    <p class="harga-asli">Rp {{number_format($barang->harga_barang,2,',','.')}}</p>
             </div>                                
         </div>  
         
