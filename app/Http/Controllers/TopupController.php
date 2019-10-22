@@ -15,11 +15,12 @@ class TopupController extends Controller
     }
 
     public function prosess(Request $req){
-                $this->validate($req, [
+        $this->validate($req, [
                     'id' => 'required'
         ],[
             'Id tidak boleh kosong',
         ]);
+
         if($req->nominal < 10000){
             session()->flash('error','TopUp Minimal Rp 10.000,00' );
         return redirect()->back();

@@ -58,7 +58,7 @@
 
     <div class="form modul" id="beli-modul">            
         <div class="layout" onclick="showModul()"></div>
-        <form action="{{url('prosess/beli')}}" method="POST">
+        <form action="{{url('topup/prosess')}}" method="POST">
             @csrf
             <div class="form-title">
                 <h4>Top Up User!</h4>
@@ -67,14 +67,13 @@
 
             <div class="form-box cod">
                 <label for="">ID User</label>
-                <input type="text" name="no_wa" id="">
+                <input type="text" name="id" id="">
             </div>
 
             <div class="form-box cod">
                 <label for="">Jumlah</label>
-                <input type="number" name="no_wa" id="">
+                <input type="number" name="nominal" id="">
             </div>
-                        
             <div class="form-box">
                     <button class="button">TOP UP</button>
             </div>                
