@@ -299,7 +299,8 @@ body{
 }
     .search-box{
         width: 90%;
-        margiN: 0 5%;      
+        margiN: 0 5%;  
+        margin-bottom: 10px;    
     }
 
     .barang-noscroll .search-box{
@@ -343,8 +344,8 @@ body{
         width: 100%;
         position: relative;
         padding: 20px;   
-        padding-bottom: 20px;  
-        padding-top: 10px;
+        padding-bottom: 0px;  
+        padding-top: 0px;
     }
     .barang-header{
         width: 100%; 
@@ -380,12 +381,19 @@ body{
         justify-content: space-between;
         positiON: relative;
         width: 100%;
-    }
+    }        
         .barang-box{
             flex: 1;
             margin: 10px;
             max-width: 140px;
             width: 140px;
+        }
+
+        .barang-box:nth-child(1){
+            margin-left: 0;
+        }
+        .barang-box:nth-last-child(){
+            margin-right: 0;
         }
 
         .barang-noscroll .barang-box{

@@ -19,12 +19,6 @@
         <nav class="bottom-nav">
             <div class="nav-list">
                 @if (Auth::user()->role == 1)
-                <div class="nav-box @yield('home')">
-                    <a href="{{url('/')}}">
-                        <img src="{{asset("img/home.png")}}" alt="">
-                        <p>Home</p>
-                    </a>
-                </div>
 
                 <div class="nav-box @yield('barang')">
                     <a href="{{url('view/all/barang')}}">
@@ -69,12 +63,6 @@
                     </a>
                 </div>
                 @else
-                <div class="nav-box @yield('home')">
-                    <a href="{{url('/')}}">
-                        <img src="{{asset("img/home.png")}}" alt="">
-                        <p>Home</p>
-                    </a>
-                </div>
                 <div class="nav-box @yield('pesanan')">
                     <a href="{{url('gudang/list')}}">
                         <img src="{{asset("img/history.png")}}" alt="">

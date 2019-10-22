@@ -194,11 +194,13 @@ class BeliController extends Controller
         ]);
     }
     public function listPesan(){
-        $data = Transaksi::where('pembeli_id',Auth::user()->id)->get();
+        $data = Transaksi::where('pembeli_id',Auth::user()->id)
+                        ->orderBy('created_at', 'DESC')
+                        ->get();
 
         
-        return view('beli.pesanan',[
-            'pesanan' => $data
+        return view('public.riwayat',[
+            'collection' => $data
         ]);
     }
     public function detailprosess($id){
@@ -225,7 +227,9 @@ class BeliController extends Controller
     }
 
     public function riwayat(){
-        $data = Transaksi::where('pembeli_id',Auth::user()->id)->get();
+        $data = Transaksi::where('pembeli_id',Auth::user()->id)
+                        ->orderBy('created_at', 'DESC')
+                        ->get();
 
         return view('public.riwayat',[
             'collection'=>$data

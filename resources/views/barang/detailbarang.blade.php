@@ -18,6 +18,7 @@
     <div class="detail-container">
         <div class="image-box">
             <p class="diskon-detail">50%</p>
+            <img src="{{asset($barang->img)}}" alt="" class="bg-image">
             <img src="{{asset($barang->img)}}" alt="">
         </div>
 

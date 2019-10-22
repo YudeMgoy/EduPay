@@ -42,6 +42,7 @@
                 <a class="x orange" href="{{url('hapus/barang')}}/{{$collection->id}}">X</a>
                 <div class="keranjang-body">
                     <div class="img-box">
+                        <img src="{{asset($collection->get_barang->img)}}" alt="" class="bg-image">
                         <img src="{{asset($collection->get_barang->img)}}" alt="">
                     </div>
                     <div class="right-box">

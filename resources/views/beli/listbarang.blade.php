@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.nonav')
+
+@section('link')
+    {{url('/home')}}
+@stop
 
 @section('title')
     List Barang
@@ -29,6 +33,7 @@
                 <a href="{{url("detail/barang/$item->id")}}">                                                        
                     <div class="image-box">
                         <p class="diskon">50%</p>
+                        <img src="{{asset($item->img)}}" alt="" class="bg-image">
                         <img src="{{asset($item->img)}}" alt="">
                     </div>
                     <h3>{{str_limit($item->nama_barang,16)}}</h3>

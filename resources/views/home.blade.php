@@ -82,6 +82,7 @@
                     <div class="barang-box">
                         <a href="{{url('detail/barang')}}/{{$data->id}}">
                             <div class="image-box">
+                                <img src="{{asset($data->img)}}" alt="" class="bg-image">
                                 <img src="{{asset($data->img)}}" alt="">
                             </div>
             

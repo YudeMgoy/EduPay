@@ -9,7 +9,10 @@ class GudangController extends Controller
 {
     public function index(){
         if (Auth::user()->role == 4) {
-            $transaksis = Transaksi::where('status',1)->get();
+            $transaksis = Transaksi::where('status',1)
+                        ->orderBy('created_at', 'DESC')
+                        ->get();
+            
             return view('gudang.gudanglist',compact('transaksis'));
         } else {
         $transaksis = Transaksi::where('id_gudang',NULL)
@@ -17,6 +20,7 @@ class GudangController extends Controller
                             ->with('get_keranjang')
                             ->with('get_pay')
                             ->with('get_status')
+                            ->orderBy('created_at', 'DESC')
                             ->get();
         
         return view('gudang.gudanglist',compact('transaksis'));  

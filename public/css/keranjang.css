@@ -109,6 +109,7 @@
 
         .form-box textarea{
             border: 1px solid #aaa;
+            color: #555;
             border-radius: 5px;
             min-height: 100px;
         }
@@ -177,6 +178,8 @@
                 left: 50%;
                 transforM: translate(-50%,-50%);
                 position: absolute;
+                height: 100%;
+                width: auto;
             }
 
 
