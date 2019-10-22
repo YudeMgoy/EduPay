@@ -82,7 +82,7 @@
                     <div class="barang-box">
                         <a href="{{url('detail/barang')}}/{{$data->id}}">
                             <div class="image-box">
-                                <img src="{{$data->img}}" alt="">
+                                <img src="{{asset($data->img)}}" alt="">
                             </div>
             
                             <h3>{{str_limit($data->nama_barang,16)}}</h3>

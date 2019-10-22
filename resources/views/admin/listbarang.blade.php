@@ -37,7 +37,7 @@
 
     <div class="form modul" id="beli-modul">            
         <div class="layout" onclick="showModul()"></div>
-        <form action="{{url('prosess/beli')}}" method="POST">
+    <form action="{{url('add/barang')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-title">
                 <h4>Tambah Barang</h4>
@@ -46,37 +46,36 @@
 
             <div class="form-box cod">
                 <label for="">Nama</label>
-                <input type="text" name="nama" id="" placeholder="Sabun Colek">
+                <input type="text" name="nama" id="" placeholder="Nama/Merk Barang">
             </div>
 
             <div class="form-box cod">
                 <label for="">Kategori</label>
                 <select name="kategori" id="">
-                    <option value="">Sembako</option>
-                    <option value="">Sabun</option>
-                    <option value="">Narkoba</option>
+                    @foreach ($kategori as $data)
+                    <option value="{{$data->int}}">{{$data->kategori}}</option>
+                    @endforeach
                 </select>
             </div>
 
             <div class="form-box cod">
                 <label for="">Gambar</label>
-                <input type="file">
+                <input type="file" name="img">
             </div>
 
             <div class="form-box cod">
                 <label for="">Harga / Satuan</label>
                 <div class="multiform">
-                    <input class="input" type="number" placeholder="Rp 10.000,00">
+                    <input class="input" type="number" placeholder="Rp 10.000,00" name="harga">
                     <select class="input" name="satuan" id="">
                         <option value="">Kg</option>
                         <option value="">Lt</option>
                         <option value="">Pcs</option>
                     </select>
                 </div>                
-            </div>
-                        
+            </div>    
             <div class="form-box">
-                    <button class="button">TOP UP</button>
+                    <button class="button" type="submit">add</button>
             </div>                
         </form>
     </div>    
