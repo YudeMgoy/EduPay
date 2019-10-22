@@ -53,19 +53,36 @@
 
                 <div class="barang-list">
                     @foreach ($list as $item)
+                    @if ($item->diskon == NULL)
+                    <div class="barang-box">
+                        <a href="{{url('detail/barang')}}/{{$item->id}}">
+                            <div class="image-box">
+                                <img src="{{asset($item->img)}}" alt="" class="bg-image">
+                                <img src="{{asset($item->img)}}" alt="">
+                            </div>
+            
+                            <h3>{{str_limit($item->nama_barang,16)}}</h3>
+                            <div class="harga">
+                                    <p class="harga-palsu">Rp {{number_format($item->harga_barang,2,',','.')}}</p>
+                                    {{-- <p class="harga-asli">Rp {{number_format($item->harga_barang,2,',','.')}}</p> --}}
+                            </div>
+                        </a>                
+                    </div>
+                    @else
                     <div class="barang-box">
                         <a href="{{url("detail/barang/$item->id")}}">                                                        
                             <div class="image-box">
-                                <p class="diskon">50%</p>
+                                <p class="diskon">{{($item->diskon/$item->harga_barang)*100}}%</p>
                                 <img src="{{asset($item->img)}}" alt="">
                             </div>
                             <h3>{{str_limit($item->nama_barang,16)}}</h3>
                             <div class="harga">                                
-                                <p class="harga-palsu">Rp {{number_format($item->harga_barang/2,2,',','.')}}</p>
+                                <p class="harga-palsu">Rp {{number_format($item->harga_barang - $item->diskon,2,',','.')}}</p>
                                 <p class="harga-asli">Rp {{number_format($item->harga_barang,2,',','.')}}</p>
                             </div>                            
                         </a>                
-                    </div>
+                    </div>    
+                    @endif
                     @endforeach
                 </div>                
             </div>            
@@ -79,6 +96,7 @@
                 <div class="barang-list">
                     @foreach ($row->get_barang_data as $data)
                         
+                    @if ($data->diskon == NULL)
                     <div class="barang-box">
                         <a href="{{url('detail/barang')}}/{{$data->id}}">
                             <div class="image-box">
@@ -88,11 +106,26 @@
             
                             <h3>{{str_limit($data->nama_barang,16)}}</h3>
                             <div class="harga">
-                                    <p class="harga-palsu">Rp {{number_format($item->harga_barang/2,2,',','.')}}</p>
-                                    <p class="harga-asli">Rp {{number_format($item->harga_barang,2,',','.')}}</p>
+                                    <p class="harga-palsu">Rp {{number_format($data->harga_barang,2,',','.')}}</p>
+                                    {{-- <p class="harga-asli">Rp {{number_format($data->harga_barang,2,',','.')}}</p> --}}
                             </div>
                         </a>                
                     </div>
+                    @else
+                    <div class="barang-box">
+                        <a href="{{url("detail/barang/$data->id")}}">                                                        
+                            <div class="image-box">
+                                <p class="diskon">{{($data->diskon/$data->harga_barang)*100}}%</p>
+                                <img src="{{asset($data->img)}}" alt="">
+                            </div>
+                            <h3>{{str_limit($data->nama_barang,16)}}</h3>
+                            <div class="harga">                                
+                                <p class="harga-palsu">Rp {{number_format($data->harga_barang - $data->diskon,2,',','.')}}</p>
+                                <p class="harga-asli">Rp {{number_format($data->harga_barang,2,',','.')}}</p>
+                            </div>                            
+                        </a>                
+                    </div>    
+                    @endif
                     @endforeach
                 </div>                
             </div>
