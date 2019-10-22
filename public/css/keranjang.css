@@ -153,6 +153,10 @@
         position: relative;
     }
 
+    .keranjang-box:hover{
+        background-color: #eee;
+    }
+
     .x{
         positioN: absolute;
         top: 5px;

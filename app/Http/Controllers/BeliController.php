@@ -219,9 +219,10 @@ class BeliController extends Controller
     public function search(Request $req){
 
         $data = ListBarang::where('nama_barang','like','%'.$req->search.'%')->get();
-
+        $kategori = "Pencarian";
         return view('beli.listbarang',[
-            'lists'=>$data
+            'lists'=>$data,
+            'kategori' => $kategori
         ]);
 
     }

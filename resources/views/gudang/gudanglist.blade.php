@@ -1,4 +1,8 @@
-@extends('layouts.nonav')
+@extends('layouts.app')
+
+@section('pesanan')
+    active
+@stop
 
 @section('keranjang')
     active
@@ -69,7 +73,7 @@
                     @if ($transaksi->status == 1)
                         <a href="{{url('dikirim')}}/{{$transaksi->id}}" class="text-secondary">Kirim</a>   
                     @elseif ($transaksi->status == 2)
-                        <a href="{{url('sampai')}}/{{$transaksi->id}}" class="text-success">perjalanan</a>   
+                        <a href="{{url('sampai')}}/{{$transaksi->id}}" class="text-success">Sampai</a>   
                     @elseif($transaksi->status == 4)
                         <a href="{{url('dikemas')}}/{{$transaksi->id}}" class="text-danger">Hapus</a>
                     @else

@@ -383,9 +383,9 @@ body{
         width: 100%;
     }        
         .barang-box{
-            flex: 1;
-            margin: 10px;
+            flex: 1;            
             max-width: 140px;
+            margin: 10px;
             width: 140px;
         }
 
@@ -399,6 +399,7 @@ body{
         .barang-noscroll .barang-box{
             width: 150px !important;
             max-width: 150px !important;
+            margin: 10px 0;
         }
         .barang-noscroll .image-box{
             width: 150px !important;    

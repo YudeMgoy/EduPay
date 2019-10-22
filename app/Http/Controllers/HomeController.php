@@ -29,11 +29,19 @@ class HomeController extends Controller
         $kategori = kategori::all(); 
         $sembako = ListBarang::where('kategori',1)->paginate(5);
         if (Auth::user()) {
+            if(Auth::user()->role==1){
+                return redirect('view/all/barang');
+            }
+
+            if(Auth::user()->role == 3){
+                return redirect('gudang/list');
+            }
+
             return view('home',[
                 'list'=> $data,
                 'sembako'=> $sembako,
                 'kategori'=> $kategori
-            ]);
+            ]);            
         } else {
             return view('auth.login');
         }

@@ -11,7 +11,7 @@
         <div class="belum-box">
             <img src="{{asset('img/belanja.png')}}" alt="">
             <h6>Oops keranjang kosong lurr!</h6>            
-            <p>Ayo belanja barang - barang dengan DIMON dengan harga yang lebih rendah</p>
+            <p>Ayo belanja barang - barang pakai DIMON untuk harga yang lebih murah</p>
             <a  class=" button"href="{{url('/list/barang')}}">MULAI BELANJA!</a>
         </div>        
     @else
