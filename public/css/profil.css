@@ -53,3 +53,20 @@
     .orange{
         color: #FF5D36 !important;
     }
+
+
+    .profil-box{
+        margin:auto;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+    }
+        .profil-box img{
+            height: 101%;
+            positiON: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
