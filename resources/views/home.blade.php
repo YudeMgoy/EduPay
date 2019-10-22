@@ -87,8 +87,8 @@
             
                             <h3>{{str_limit($data->nama_barang,16)}}</h3>
                             <div class="harga">
-                                <p class="harga-palsu">Rp {{$item->harga_barang/2}},00</p>
-                                <p class="harga-asli">Rp {{$item->harga_barang}},00</p>
+                                <p class="harga-palsu">Rp {{$data->harga_barang/2}},00</p>
+                                <p class="harga-asli">Rp {{$data->harga_barang}},00</p>
                             </div>
                         </a>                
                     </div>
