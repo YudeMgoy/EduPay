@@ -14,7 +14,7 @@
             <a href="{{url('terima/barang')}}/{{$detail->id}}" class="beli-button button">Terima</a>
             <a href="{{url('batal/beli')}}/{{$detail->id}}" class="beli-button button">Batal</a>
         @elseif($detail->status == 4 || $detail->status == 3)        
-            <a href="#" class="beli-button button" disabled>Hapus</a>       
+            <a href="{{url('hapus/transaksi')}}/{{$detail->id}}" class="beli-button button">Hapus</a>       
         @endif        
     </div>
 </nav>

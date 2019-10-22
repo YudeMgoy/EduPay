@@ -254,4 +254,11 @@ class BeliController extends Controller
         
         return redirect()->back();
     }
+
+    public function hapusTransaksi($id){
+        $data = Transaksi::find($id);
+        $data->delete();
+
+        return redirect(url('riwayat'));
+    }
 }
