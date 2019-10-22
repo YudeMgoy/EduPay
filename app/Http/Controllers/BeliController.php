@@ -53,7 +53,7 @@ class BeliController extends Controller
                                 ->where('pembeli_id',Auth::user()->id)
                                 ->first();
             $keranjang->jumlah_barang += $req->jumlah_barang;
-            $keranjang->harga_barang += $req->jumlah_barang * $barang->harga_barang;
+            $keranjang->harga_barang += $req->jumlah_barang * ($barang->harga_barang - $barang->diskon);
             session()->flash('status', 'Berhasil Menambahkan Barang ke keranjang');            
             $keranjang->update();
         }
@@ -61,7 +61,7 @@ class BeliController extends Controller
             $keranjang = new Keranjang;
             $keranjang->id_barang = $barang->id;
             $keranjang->jumlah_barang = $req->jumlah_barang;
-            $keranjang->harga_barang = $barang->harga_barang * $req->jumlah_barang;            
+            $keranjang->harga_barang = $req->jumlah_barang * ($barang->harga_barang - $barang->diskon);            
             $keranjang->pembeli_id = Auth::user()->id;
             session()->flash('status', 'Berhasil Menambahkan Barang ke keranjang'); 
             $keranjang->save();
@@ -77,7 +77,7 @@ class BeliController extends Controller
         $keranjang = Keranjang::find($req->id);
         $barang = listBarang::find($keranjang->id_barang);
         $keranjang->jumlah_barang = $req->jumlah_barang;
-        $keranjang->harga_barang = $barang->harga_barang * $req->jumlah_barang; 
+        $keranjang->harga_barang = ($barang->harga_barang - $barang->diskon) * $req->jumlah_barang; 
         session()->flash('status', 'Troli Berhasil Di edit'); 
         $keranjang->save();
 
@@ -174,7 +174,7 @@ class BeliController extends Controller
         // return view('pages.qrcode', [
         //     'qrfile' => $file
         // ]);
-        return redirect(url('list/pesanan'));
+        return redirect(url('riwayat'));
     }
     public function IsiKeranjang(){
         $bayar = pay::all();

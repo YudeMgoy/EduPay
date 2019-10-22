@@ -32,7 +32,7 @@
         
         <div class="deskripsi-box">
             <h4>Deskripsi Barang</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, quisquam maxime sed praesentium eum tempora ea hic mollitia ipsa fugiat provident earum labore fugit libero quas facilis molestias voluptas voluptatibus?</p>
+            <p>{{$barang->deskripsi}}</p>
         </div>
         
     </div>

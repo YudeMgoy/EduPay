@@ -35,9 +35,9 @@
                                 <select class="form-control" id="exampleFormControlSelect1" name="kategori">
                                     <option>--------Pilih Kategori---------</option>
                                     @foreach ($collection as $item)
-                                        <option value="{{$item->int}}"@if ($item->int == $data->kategori))
-        selected="selected"
-    @endif>{{$item->kategori}}</option>
+                                        <option value="{{$item->id}}"@if ($item->id == $data->kategori))
+                                        selected="selected"
+                                            @endif>{{$item->kategori}}</option>
                                     @endforeach
                                 </select>
 
@@ -67,6 +67,53 @@
                                 <input id="harga" type="number" class="form-control @error('harga') is-invalid @enderror" name="harga" required autocomplete="harga" value="{{$data->harga_barang}}">
 
                                 @error('harga')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="harga" class="col-md-4 col-form-label text-md-right">{{ __('Diskon') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="harga" type="number" class="form-control @error('diskon') is-invalid @enderror" name="diskon" required autocomplete="diskon" value="{{$data->diskon}}">
+
+                                @error('diskon')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="harga" class="col-md-4 col-form-label text-md-right">{{ __('Deskripsi') }}</label>
+
+                            <div class="col-md-6">
+                                <textarea name="des" id="" cols="20" rows="5" class="form-control @error('des') is-invalid @enderror">{{$data->deskripsi}}</textarea>
+                                @error('des')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="kategori" class="col-md-4 col-form-label text-md-right">{{ __('Satuan') }}</label>
+                            <div class="col-md-6">
+                                <select class="form-control" id="exampleFormControlSelect1" name="satuan">
+                                    <option>--------Pilih Kategori---------</option>
+                                    @foreach ($satuan as $satuans)
+                                        <option value="{{$satuans->id}}"@if ($satuans->id == $data->satuan))
+                                        selected="selected"
+                                            @endif>{{$satuans->satuan}}</option>
+                                    @endforeach
+                                </select>
+
+                                @error('satuan')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

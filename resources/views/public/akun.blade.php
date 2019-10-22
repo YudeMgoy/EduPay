@@ -10,8 +10,8 @@
 @section('content')
     <div class="top-container">
         <div class="img-box">
-            <img src="https://s1.buzzwav.com/2019/06/Chloe/05.jpg" alt="" class="bg-image">
-            <img src="https://s1.buzzwav.com/2019/06/Chloe/05.jpg" alt="">
+            <img src="{{Auth::user()->img}}" alt="" class="bg-image">
+            <img src="{{Auth::user()->img}}" alt="">
         </div>
 
         <h4>{{Auth::user()->name}}</h4>
@@ -34,7 +34,7 @@
             <p>Rp.{{Auth::user()->saldo}}</p>
         </div>
         <div class="bottom-box">
-            <a href="{{url('list/pesanan')}}">Pesanan</a>       
+            <a href="{{url('riwayat')}}">Pesanan</a>       
         </div> 
             @else
                 
