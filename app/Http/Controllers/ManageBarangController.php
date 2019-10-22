@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use App\kategori;
+use App\satuan;
 
 class ManageBarangController extends Controller
 {
@@ -27,21 +28,24 @@ class ManageBarangController extends Controller
     public function index(){
         $data = kategori::all();
         $list = listBarang::all();
+        $satuan = satuan::all();
         return view('admin.listbarang',[
             'barang' => $list,
-            'kategori'=> $data
+            'kategori'=> $data,
+            'satuan' => $satuan
         ]);
     }
     public function create(Request $req){
-        
         $this->validate($req, [
             'img' => 'required',
             'kategori' => 'required',
             'harga' => 'required',
+            'satuan' => 'required'
         ],[
             'Gambar Harus Terisi',
             'Kategori Harus Terisi',
             'Harga Harus Terisi',
+            'satuan harus terisi'
         ]);
 
         $file = $req->file('img');     
@@ -54,6 +58,8 @@ class ManageBarangController extends Controller
         $list->nama_barang = $req->nama;
         $list->kategori = $req->kategori;
         $list->img = $dir.$newName;
+        $list->deskripsi = $req->des;
+        $list->satuan = $req->satuan;
         $list->harga_barang = $req->harga;
         $list->save();
         session()->flash('status', 'Berhasil Insert Barang');
@@ -93,6 +99,9 @@ class ManageBarangController extends Controller
             $list->kategori = $req->kategori;
             $list->img = $dir.$newName;
             $list->harga_barang = $req->harga;
+            $list->diskon = $req->diskon;
+            $list->deskripsi = $req->des;
+            $list->satuan = $req->satuan;
             $list->update();
             session()->flash('status', 'Berhasil Update Barang');
             return redirect()->back();
@@ -101,16 +110,21 @@ class ManageBarangController extends Controller
             $list->nama_barang = $req->nama;
             $list->kategori = $req->kategori;
             $list->harga_barang = $req->harga;
+            $list->diskon = $req->diskon;
+            $list->deskripsi = $req->des;
+            $list->satuan = $req->satuan;
             $list->save();
             session()->flash('status', 'Berhasil Update Barang');
             return redirect()->back();
     }
     public function editview($id){
         $data = listBarang::find($id);
-        $option = kategori::all(); 
+        $option = kategori::all();
+        $satuan = satuan::all(); 
         return view('admin.edit',[
             'collection'=> $option,
-            'data' => $data
+            'data' => $data,
+            'satuan' => $satuan
         ]);
     }
 }

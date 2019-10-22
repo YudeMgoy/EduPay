@@ -33,7 +33,7 @@
                     <h4>{{$data->get_barang->nama_barang}} x ({{$data->jumlah_barang}})</h4>
                     <div class="bayar-box" style="margin-top: 5px;">
                         <p style="font-size: 0.9em">Harga</p>
-                        <p style="margin: auto !important;margin-right: 0 !important;font-size: 0.9em;">Rp {{$data->get_barang->harga_barang}},00<p>
+                        <p style="margin: auto !important;margin-right: 0 !important;font-size: 0.9em;">Rp {{$data->get_barang->harga_barang - $data->get_barang->diskon}},00<p>
                     </div>                        
                 </div>                                        
             </div>

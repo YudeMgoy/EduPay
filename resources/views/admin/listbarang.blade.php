@@ -60,7 +60,7 @@
 
             <div class="form-box cod">
                 <label for="">Deskripsi Barang</label>
-                <textarea name="" id="">                                            
+                <textarea name="des" id="">                                            
                 </textarea>
             </div>
 
@@ -74,12 +74,19 @@
                 <div class="multiform">
                     <input class="input" type="number" placeholder="Rp 10.000,00" name="harga">
                     <select class="input" name="satuan" id="">
-                        <option value="">Kg</option>
-                        <option value="">Lt</option>
-                        <option value="">Pcs</option>
+                        @foreach ($satuan as $data)
+                            <option value="{{$data->id}}">{{$data->satuan}}</option>
+                        @endforeach
                     </select>
                 </div>                
-            </div>    
+            </div>
+            
+            <div class="form-box cod">
+                <label for="">Dison/Pengurangan Harga</label>
+                <div>
+                    <input class="input" type="number" placeholder="Rp 10.000,00 boleh kosong kok" name="diskon">
+                </div>                
+            </div>
             <div class="form-box">
                     <button class="button" type="submit">TAMBAH</button>
             </div>                

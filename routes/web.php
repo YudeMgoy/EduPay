@@ -17,11 +17,13 @@ Auth::routes();
 Route::get('logout','HomeController@logout');
 
 Route::middleware('auth')->group(function(){
+    Route::post('ganti/password','AkunController@changePassword');
+    Route::post('ganti/nama','AkunController@gantiNama');
     Route::get('/','HomeController@index');
     Route::get('akun','HomeController@akun');
     Route::view('topup', 'public.topup');
     Route::get('/home', 'HomeController@index')->name('home');
-
+    Route::post('ganti/foto','AkunController@ganti_profil');
     Route::post('edit/keranjang','BeliController@EditKeranjang');
     Route::post('search/barang','BeliController@search');
     Route::get('list/barang','BeliController@ListBarang')->name('jualan');

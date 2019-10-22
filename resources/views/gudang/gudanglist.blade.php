@@ -69,11 +69,11 @@
                     @if ($transaksi->status == 1)
                         <a href="{{url('dikirim')}}/{{$transaksi->id}}" class="text-secondary">Kirim</a>   
                     @elseif ($transaksi->status == 2)
-                        <a href="{{url('sampai')}}/{{$transaksi->id}}" class="text-success">Sampai</a>   
+                        <a href="{{url('sampai')}}/{{$transaksi->id}}" class="text-success">perjalanan</a>   
                     @elseif($transaksi->status == 4)
                         <a href="{{url('dikemas')}}/{{$transaksi->id}}" class="text-danger">Hapus</a>
                     @else
-                        <a href="{{url('dikirim')}}/{{$transaksi->id}}" class="text-primary">Selesai</a>
+                        <a href="#" class="text-primary">Selesai</a>
                     @endif
                 </div>
             </div>
