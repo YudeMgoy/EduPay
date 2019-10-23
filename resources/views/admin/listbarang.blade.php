@@ -25,7 +25,7 @@
                     <th scope="row">{{$loop->iteration}}</th>
                     <td>{{$item->nama_barang}}</td>
                     <td>
-                        <a href="{{url('edit/view')}}/{{$item->id}}" class="orange">Edit</a>
+                        <a href="{{url("edit/view/$item->id")}}"class="orange">Edit</a>
                         <a href="{{url('delete/item')}}/{{$item->id}}" class="orange">Hapus</a>
                     </td>
                 </tr>
@@ -37,61 +37,61 @@
 
     <div class="form modul" id="beli-modul">            
         <div class="layout" onclick="showModul()"></div>
-    <form action="{{url('add/barang')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{url('add/barang')}}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="form-title">
-                <h4>Tambah Barang</h4>
-                <a class="x" href="#" onclick="showModul()" style="color: white !important;">X</a>
-            </div>
-
-            <div class="form-box cod">
-                <label for="">Nama</label>
-                <input type="text" name="nama" id="" placeholder="Nama/Merk Barang">
-            </div>
-
-            <div class="form-box cod">
-                <label for="">Kategori</label>
-                <select name="kategori" id="">
-                    @foreach ($kategori as $data)
-                    <option value="{{$data->int}}">{{$data->kategori}}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="form-box cod">
-                <label for="">Deskripsi Barang</label>
-                <textarea name="des" id="">                                            
-                </textarea>
-            </div>
-
-            <div class="form-box cod">
-                <label for="">Gambar</label>
-                <input type="file" name="img">
-            </div>
-
-            <div class="form-box cod">
-                <label for="">Harga / Satuan</label>
-                <div class="multiform">
-                    <input class="input" type="number" placeholder="Rp 10.000,00" name="harga">
-                    <select class="input" name="satuan" id="">
-                        @foreach ($satuan as $data)
-                            <option value="{{$data->id}}">{{$data->satuan}}</option>
+            <div class="form-container">
+                <div class="form-title">
+                    <h4>Tambah Barang</h4>
+                    <a class="x" href="#" onclick="showModul()" style="color: white !important;">X</a>
+                </div>
+    
+                <div class="form-box">
+                    <label for="">Nama</label>
+                    <input type="text" name="nama" id="" placeholder="Nama/Merk Barang">
+                </div>
+    
+                <div class="form-box">
+                    <label for="">Kategori</label>
+                    <select name="kategori" id="">
+                        @foreach ($kategori as $data)
+                            <option value="{{$data->int}}">{{$data->kategori}}</option>
                         @endforeach
                     </select>
-                </div>                
-            </div>
-            
-            <div class="form-box cod">
-                <label for="">Dison/Pengurangan Harga</label>
-                <div>
-                    <input class="input" type="number" placeholder="Rp 10.000,00 boleh kosong kok" name="diskon">
-                </div>                
-            </div>
-            <div class="form-box">
-                    <button class="button" type="submit">TAMBAH</button>
-            </div>                
+                </div>
+    
+                <div class="form-box">
+                    <label for="">Deskripsi Barang</label>
+                    <textarea name="des" id=""></textarea>
+                </div>
+    
+                <div class="form-box">
+                    <label for="">Gambar</label>
+                    <input type="file" name="img">
+                </div>
+    
+                <div class="form-box">
+                    <label for="">Harga / Satuan</label>
+                    <div class="multiform">
+                        <input class="input" type="number" placeholder="Rp 10.000,00" name="harga">
+                        <select class="input" name="satuan" id="">
+                            @foreach ($satuan as $data)
+                                <option value="{{$data->id}}">{{$data->satuan}}</option>
+                            @endforeach
+                        </select>
+                    </div>                
+                </div>
+                
+                <div class="form-box ">
+                    <label for="">Diskon/Pengurangan Harga</label>                
+                    <input class="input" type="number" placeholder="Rp 10.000,00 boleh kosong kok" name="diskon">                
+                </div>
+                <div class="form-box">
+                        <button class="button" type="submit">TAMBAH</button>
+                </div>      
+            </div>                      
         </form>
-    </div>    
+    </div>
+        
     
     <script>
     modul = document.getElementById("beli-modul");

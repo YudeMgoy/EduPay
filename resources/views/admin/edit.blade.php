@@ -1,5 +1,57 @@
 @extends('layouts.app')
 @section('content')
+    {{-- <div class="form modul modul-active" id="edit-modul">            
+        <div class="layout" ></div>
+        <form action="{{route('editbarang')}}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="form-title">
+                <h4>Tambah Barang</h4>
+                <a class="x" href="#" style="color: white !important;">X</a>
+            </div>
+            <div class="form-box cod">
+                <label for="">Nama</label>
+                <input type="text" name="nama" id="" placeholder="Nama/Merk Barang" value="{{$data->nama_barang}}">
+            </div>
+            <div class="form-box cod">
+                <label for="">Kategori</label>
+                <select name="kategori" id="">
+                    @foreach ($collection as $i)
+                        <option value="{{$i->int}}">{{$i->kategori}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-box cod">
+                <label for="">Deskripsi Barang</label>
+                <textarea name="des" id="">{{$data->deskripsi}}</textarea>
+            </div>
+
+            <div class="form-box cod">
+                <label for="">Gambar</label>
+                <input type="file" name="img">
+            </div>
+
+            <div class="form-box cod">
+                <label for="">Harga / Satuan</label>
+                <div class="multiform">
+                    <input class="input" type="number" value="{{$data->harga_barang}}" placeholder="Rp 10.000,00" name="harga">
+                    <select class="input" name="satuan" id="">
+                        @foreach ($satuan as $d)
+                            <option value="{{$d->id}}">{{$d->satuan}}</option>
+                        @endforeach
+                    </select>
+                </div>                
+            </div>
+            
+            <div class="form-box cod">
+                <label for="">Diskon/Pengurangan Harga</label>                
+                <input class="input" type="number" placeholder="Rp 10.000,00 boleh kosong kok" name="diskon" value="{{$data->diskon}}">                
+            </div>
+            <div class="form-box">
+                    <button class="button" type="submit">EDIT</button>
+            </div>                
+        </form>
+    </div> --}}
+
     <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

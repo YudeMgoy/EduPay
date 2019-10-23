@@ -562,7 +562,7 @@ form .nav-list{
     flex-flow: row nowrap;
 }
     .detail-container .info-box .harga p{
-        margin: auto;
+        margin: auto 0;        
         color:white;
     }
     .detail-container .info-box .harga .harga-asli{

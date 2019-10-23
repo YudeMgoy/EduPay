@@ -67,49 +67,51 @@
             <div class="layout" onclick="beliModul()"></div>
             <form action="{{url('prosess/beli')}}" method="POST">
                 @csrf
-                <div class="form-title">
-                    <h4>Ayo Beli Lurr!</h4>
-                    <a class="x" href="#" onclick="beliModul()" style="color: white !important;">X</a>
-                </div>
-                <div class="form-box">
-                    <label for="">Metode</label>
-                    <select name="pay" id="metode">
-                        @foreach ($pay as $i)
-                            <option value="{{$i->int}}">{{$i->pay}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-box saldo" id="saldo">
-                    <label for="">Saldo Kamu</label>
-                    <p style="margin-bottom:0" class="saldo-text">Rp {{Auth::user()->saldo}}</p>
-                </div>
-
-                <div class="form-box cod" id="cod">
-                    <label for="">Ketemuan Dimana</label>
-                    <textarea name="alamat_kelas" id=""></textarea>
-                </div>
-                <div class="form-box cod">
-                    <label for="">No Whatsapp mu</label>
-                    <input type="number" name="no_wa" id="">
-                </div>
-                
-                <div class="form-box bayar">
-                    {{-- <div class="bayar-box harga">
-                        <p>Harga</p>
-                        <p>Rp {{number_format($harga,2,',','.')}}</p>
+                <div class="form-container">
+                    <div class="form-title">
+                        <h4>Ayo Beli Lurr!</h4>
+                        <a class="x" href="#" onclick="beliModul()" style="color: white !important;">X</a>
                     </div>
-                    <div class="bayar-box diskon">
-                        <p>Jumlah</p>
-                        <p>- Rp 5.000,00</p>
-                    </div> --}}
-                    <div class="bayar-box  total">
-                        <p>Total</p>
-                        <p>Rp {{number_format($harga,2,',','.')}}</p>
+                    <div class="form-box">
+                        <label for="">Metode</label>
+                        <select name="pay" id="metode">
+                            @foreach ($pay as $i)
+                                <option value="{{$i->int}}">{{$i->pay}}</option>
+                            @endforeach
+                        </select>
                     </div>
-                </div>
-                <div class="form-box">
-                        <button class="button">BAYAR</button>
-                </div>                
+                    <div class="form-box saldo" id="saldo">
+                        <label for="">Saldo Kamu</label>
+                        <p style="margin-bottom:0" class="saldo-text">Rp {{Auth::user()->saldo}}</p>
+                    </div>
+    
+                    <div class="form-box cod" id="cod">
+                        <label for="">Ketemuan Dimana</label>
+                        <textarea name="alamat_kelas" id=""></textarea>
+                    </div>
+                    <div class="form-box cod">
+                        <label for="">No Whatsapp mu</label>
+                        <input type="number" name="no_wa" id="">
+                    </div>
+                    
+                    <div class="form-box bayar">
+                        {{-- <div class="bayar-box harga">
+                            <p>Harga</p>
+                            <p>Rp {{number_format($harga,2,',','.')}}</p>
+                        </div>
+                        <div class="bayar-box diskon">
+                            <p>Jumlah</p>
+                            <p>- Rp 5.000,00</p>
+                        </div> --}}
+                        <div class="bayar-box  total">
+                            <p>Total</p>
+                            <p>Rp {{number_format($harga,2,',','.')}}</p>
+                        </div>
+                    </div>
+                    <div class="form-box">
+                            <button class="button">BAYAR</button>
+                    </div>      
+                </div>                          
             </form>
         </div>
     @endif

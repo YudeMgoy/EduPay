@@ -35,6 +35,7 @@ class ManageBarangController extends Controller
             'satuan' => $satuan
         ]);
     }
+
     public function create(Request $req){
         $this->validate($req, [
             'img' => 'required',
@@ -47,6 +48,7 @@ class ManageBarangController extends Controller
             'Harga Harus Terisi',
             'satuan harus terisi'
         ]);
+        
 
         $file = $req->file('img');     
         $extension = $file->getClientOriginalExtension();          
@@ -59,6 +61,7 @@ class ManageBarangController extends Controller
         $list->kategori = $req->kategori;
         $list->img = $dir.$newName;
         $list->deskripsi = $req->des;
+        $list->diskon = $req->diskon;
         $list->satuan = $req->satuan;
         $list->harga_barang = $req->harga;
         $list->save();
