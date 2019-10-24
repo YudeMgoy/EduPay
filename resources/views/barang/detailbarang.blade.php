@@ -40,7 +40,6 @@
             <img src="{{asset($barang->img)}}" alt="" class="bg-image">
             <img src="{{asset($barang->img)}}" alt="">
         </div>
-
         <div class="info-box">
             <h3>{{$barang->nama_barang}}</h3>
             <div class="harga">                                

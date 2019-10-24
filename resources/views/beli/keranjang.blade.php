@@ -91,7 +91,7 @@
                     </div>
                     <div class="form-box cod">
                         <label for="">No Whatsapp mu</label>
-                        <input type="number" name="no_wa" id="">
+                        <input type="number" name="no_wa" id="" required>
                     </div>
                     
                     <div class="form-box bayar">

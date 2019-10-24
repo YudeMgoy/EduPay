@@ -67,7 +67,7 @@ class BeliController extends Controller
             $keranjang->save();
         }        
 
-        return redirect('keranjang');
+        return redirect(url('keranjang'));
     }
     public function EditKeranjang(Request $req){
         if($req->jumlah_barang == 0){
@@ -109,6 +109,11 @@ class BeliController extends Controller
         $keranjangs = Keranjang::where('pembeli_id', Auth()->user()->id)
                                 ->where('transaksi_id', NULL)
                                 ->get();
+
+        if(count($keranjangs) <= 0){
+            return redirect()->back()->with('error','Tidak ada barang di keranjang');
+        }
+        else{
         $total_harga = 0;
         
         for ($i=0;$i<count($keranjangs);$i++)
@@ -130,7 +135,7 @@ class BeliController extends Controller
                 $transaksi = new Transaksi;
                 $transaksi->pembeli_id = Auth::user()->id;
                 $transaksi->paymen = $req->pay;
-                $transaksi->alamat_kelas = "Tempat COD";
+                $transaksi->alamat_kelas = $req->alamat_kelas;
                 $transaksi->status = 1;
                 $transaksi->no_wa = $req->no_wa;
                 $transaksi->id_transaksi =  $randstring;     
@@ -175,6 +180,7 @@ class BeliController extends Controller
         //     'qrfile' => $file
         // ]);
         return redirect(url('riwayat'));
+        }
     }
     public function IsiKeranjang(){
         $bayar = pay::all();
