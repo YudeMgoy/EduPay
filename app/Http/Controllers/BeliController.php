@@ -235,6 +235,10 @@ class BeliController extends Controller
 
     public function riwayat(){
         $data = Transaksi::where('pembeli_id',Auth::user()->id)
+                        ->where('status',1)
+                        ->orWhere('status',2)
+                        ->orWhere('status',3)
+                        ->orWhere('status',3)
                         ->orderBy('created_at', 'DESC')
                         ->get();
 
@@ -262,8 +266,10 @@ class BeliController extends Controller
     }
 
     public function hapusTransaksi($id){
+
         $data = Transaksi::find($id);
-        $data->delete();
+        $data->status = 5;
+        $data->save();
 
         return redirect(url('riwayat'));
     }

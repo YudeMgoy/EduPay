@@ -92,9 +92,8 @@
                     <h4>{{$row->kategori}}</h4>
                     <a href="{{url('list/barang')}}/{{$row->int}}" class="lihat">Lihat Semua</a>
                 </div>
-
                 <div class="barang-list">
-                    @foreach ($row->get_barang_data as $data)
+                    @foreach ($row->get_barang_data->take(5) as $data)
                         
                     @if ($data->diskon == NULL)
                     <div class="barang-box">
