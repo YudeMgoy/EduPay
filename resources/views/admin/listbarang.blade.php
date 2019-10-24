@@ -68,7 +68,6 @@
                     <label for="">Gambar</label>
                     <input type="file" name="img">
                 </div>
-    
                 <div class="form-box">
                     <label for="">Harga / Satuan</label>
                     <div class="multiform">
@@ -80,7 +79,6 @@
                         </select>
                     </div>                
                 </div>
-                
                 <div class="form-box ">
                     <label for="">Diskon/Pengurangan Harga</label>                
                     <input class="input" type="number" placeholder="Rp 10.000,00 boleh kosong kok" name="diskon">                
