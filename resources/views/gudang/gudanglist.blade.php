@@ -23,21 +23,22 @@
                 <strong>Sukses!</strong> {{session('status')}}
             </div>                        
         @endif
-        <div class="search-box">
+        {{-- <div class="search-box">
             <form action="{{url('search/barang')}}" method="POST">
                 @csrf
                 <input type="text" name="search" placeholder="Cari pesanan">
                 <button class="button">Search</button>                
             </form>
-        </div>
+        </div> --}}
         @php
             $index =0;
         @endphp                    
         @foreach ($transaksis as $transaksi)        
             <div class="pesanan-box">                
                 <div class="pesanan-header" onclick="showBody(<?php echo $index ?>)">
-                    <h4>{{$transaksi->get_barang->name}}</h4>
+                    <h4>{{$transaksi->get_barang->name}} : {{$transaksi->id_transaksi}}</h4>
                     <i class="fa fa-caret-down"></i>
+                    <span class="fa fa-caret-down"></span>
                 </div>
                 <div class="pesanan-body">                     
                     <div class="barang-pesanan-list">
@@ -52,6 +53,7 @@
                             <h4>{{$keranjang->get_barang->nama_barang}}</h4>
                             <div class="bottom">
                                 <p>{{number_format(($keranjang->get_barang->harga_barang-$keranjang->get_barang->diskon), 2, ',','.')}} ({{$keranjang->jumlah_barang}})</p>
+                                @if ($transaksi->status == 1)
                                 @if ($keranjang->jumlah_barang == 1)
                                  <a href="{{url('barang/kosong')}}/{{$keranjang->id}}" class="orange">Kosong</a>
                                 @else
@@ -75,6 +77,8 @@
                                 </div>
                                 <a href="#" class="orange" onclick="showModul()">edit</a>   
                                 @endif
+                                @else
+                                @endif
                             </div>
                                                                                         
                         </div>
@@ -87,7 +91,13 @@
                     <div class="status">
                         <p>Metode : {{ $transaksi->get_pay->pay }}</p>
                         <p class="{{$transaksi->get_status->style}}">{{ $transaksi->get_status->status }}</p>
-                    </div>                    
+                    </div>
+                    <div class="status">
+                        <p>WA : {{ $transaksi->no_wa }}</p>
+                    </div>
+                    <div class="status">
+                        <p>Tempat : {{ $transaksi->alamat_kelas}}</p>
+                    </div>                                        
                     <div class="status" style="margin-bottoM: 10px;">
                         <h6>Total Bayar</h6>
                         <h6>Rp {{number_format($transaksi->total_harga, 2, ',','.')}} </h6>                                                

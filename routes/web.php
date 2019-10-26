@@ -54,6 +54,11 @@ Route::view('lupa', 'public.lupa');
 
 Route::middleware('auth')->group(function(){
     Route::middleware('CekRole')->group(function(){
+        Route::post('edit/kategori','KategoriController@edit')->name('editkategori');
+        Route::get('edit/kategori/view/{id}','KategoriController@editview');
+        Route::get('hapus/kategori/{id}','KategoriController@delete');
+        Route::post('add/kategori','KategoriController@add');
+        Route::get('kategori/view','KategoriController@index');
         Route::post('topup/prosess','TopupController@prosess')->name('topup');
         Route::get('topup/admin','TopupController@topup');
         Route::get('view/all/barang','ManageBarangController@index');

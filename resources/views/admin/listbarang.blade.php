@@ -54,7 +54,7 @@
                     <label for="">Kategori</label>
                     <select name="kategori" id="">
                         @foreach ($kategori as $data)
-                            <option value="{{$data->int}}">{{$data->kategori}}</option>
+                            <option value="{{$data->id}}">{{$data->kategori}}</option>
                         @endforeach
                     </select>
                 </div>

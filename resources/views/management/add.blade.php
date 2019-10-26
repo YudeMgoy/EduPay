@@ -35,7 +35,7 @@
                                 <select class="form-control" id="exampleFormControlSelect1" name="kategori">
                                     <option>--------Pilih Kategori---------</option>
                                     @foreach ($collection as $item)
-                                        <option value="{{$item->int}}">{{$item->kategori}}</option>
+                                        <option value="{{$item->id}}">{{$item->kategori}}</option>
                                     @endforeach
                                 </select>
 

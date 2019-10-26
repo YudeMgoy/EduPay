@@ -29,7 +29,9 @@ class KosongController extends Controller
                 $transaksi->save();
                 return redirect()->back();
             }
-            $keranjag->delete();
+            $transaksi->save();
+            $keranjang->delete();
+            return redirect()->back();
         }
     }
 
