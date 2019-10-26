@@ -238,7 +238,7 @@ class BeliController extends Controller
                         ->where('status',1)
                         ->orWhere('status',2)
                         ->orWhere('status',3)
-                        ->orWhere('status',3)
+                        ->orWhere('status',4)
                         ->orderBy('created_at', 'DESC')
                         ->get();
 

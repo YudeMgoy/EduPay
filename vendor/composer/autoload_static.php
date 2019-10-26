@@ -393,6 +393,7 @@ class ComposerStaticInit68dbc5009eec2cc5c0164b3be45d996a
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\GudangController' => __DIR__ . '/../..' . '/app/Http/Controllers/GudangController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\KosongController' => __DIR__ . '/../..' . '/app/Http/Controllers/KosongController.php',
         'App\\Http\\Controllers\\ManageBarangController' => __DIR__ . '/../..' . '/app/Http/Controllers/ManageBarangController.php',
         'App\\Http\\Controllers\\PromoController' => __DIR__ . '/../..' . '/app/Http/Controllers/PromoController.php',
         'App\\Http\\Controllers\\TopupController' => __DIR__ . '/../..' . '/app/Http/Controllers/TopupController.php',

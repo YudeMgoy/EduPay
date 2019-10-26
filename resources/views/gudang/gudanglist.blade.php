@@ -51,8 +51,30 @@
                         <div class="barang-pesanan-box">
                             <h4>{{$keranjang->get_barang->nama_barang}}</h4>
                             <div class="bottom">
-                                <p>{{number_format($keranjang->get_barang->harga_barang, 2, ',','.')}} ({{$keranjang->jumlah_barang}})</p>
-                                <a href="#" class="orange">Kosong</a>
+                                <p>{{number_format(($keranjang->get_barang->harga_barang-$keranjang->get_barang->diskon), 2, ',','.')}} ({{$keranjang->jumlah_barang}})</p>
+                                @if ($keranjang->jumlah_barang == 1)
+                                 <a href="{{url('barang/kosong')}}/{{$keranjang->id}}" class="orange">Kosong</a>
+                                @else
+                                <div class="form modul" id="beli-modul">            
+                                    <div class="layout" onclick="showModul()"></div>
+                                    <form action="{{url('edit/stock')}}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="id_keranjang" value="{{$keranjang->id}}">
+                                        <div class="form-title">
+                                            <h4>edit</h4>
+                                            <a class="x" href="#" onclick="showModul()" style="color: white !important;">X</a>
+                                        </div>
+                                        <div class="form-box cod">
+                                            <label for="">Jumlah yang tersedia</label>
+                                            <input type="number" name="jumlah_stock" id="">
+                                        </div>
+                                        <div class="form-box">
+                                                <button class="button">Edit</button>
+                                        </div>                
+                                    </form>
+                                </div>
+                                <a href="#" class="orange" onclick="showModul()">edit</a>   
+                                @endif
                             </div>
                                                                                         
                         </div>
@@ -84,7 +106,7 @@
             @endphp
         @endforeach
     </div>
-</div>
+</div> 
 
 <script>
     bodies = document.getElementsByClassName("pesanan-body");
@@ -92,5 +114,12 @@
     function showBody(index){        
         bodies[index].classList.toggle('pesanan-body-active');
     }
+</script>
+<script>
+modul = document.getElementById("beli-modul");
+
+function showModul(){
+    modul.classList.toggle("modul-active");
+}
 </script>
 @endsection

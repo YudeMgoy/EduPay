@@ -16,6 +16,10 @@ class GudangController extends Controller
             return view('gudang.gudanglist',compact('transaksis'));
         } else {
         $transaksis = Transaksi::where('id_gudang',NULL)
+                            ->where('status',1)
+                            ->orwhere('status',2)
+                            ->orwhere('status',3)
+                            ->orwhere('status',4)
                             ->with('get_barang')
                             ->with('get_keranjang')
                             ->with('get_pay')

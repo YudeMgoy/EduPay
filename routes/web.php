@@ -65,6 +65,8 @@ Route::middleware('auth')->group(function(){
         Route::get('edit/view/{id}','ManageBarangController@editview');
     });
     Route::middleware('isGudang')->group(function(){
+        Route::get('barang/kosong/{id}','KosongController@kosong');
+        Route::post('edit/stock','KosongController@edit');
         Route::get('dikirim/{id}','GudangController@dikirim');
         Route::get('dikemas/{id}','GudangController@dikemas');
         Route::get('gudang/list','GudangController@index');
