@@ -76,7 +76,7 @@
                         <label for="">Metode</label>
                         <select name="pay" id="metode">
                             @foreach ($pay as $i)
-                                <option value="{{$i->int}}">{{$i->pay}}</option>
+                                <option value="{{$i->id}}">{{$i->pay}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -87,11 +87,15 @@
     
                     <div class="form-box cod" id="cod">
                         <label for="">Ketemuan Dimana</label>
-                        <textarea name="alamat_kelas" id=""></textarea>
+                        <select name="alamat_kelas" id="">
+                            <option value="Lapangan Volly">Lapangan Voly</option>
+                            <option value="Perpustakaan">Perpus</option>
+                            <option value="Lapangan Basket">Lapangan Basket</option>
+                        </select>
                     </div>
                     <div class="form-box cod">
                         <label for="">No Whatsapp mu</label>
-                        <input type="number" name="no_wa" id="" required>
+                        <input type="number" name="no_wa" id="" required placeholder="Yang Aktif ya">
                     </div>
                     
                     <div class="form-box bayar">

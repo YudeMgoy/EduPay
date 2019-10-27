@@ -54,6 +54,8 @@ Route::view('lupa', 'public.lupa');
 
 Route::middleware('auth')->group(function(){
     Route::middleware('CekRole')->group(function(){
+        Route::get('promo/list','PromosiController@index');
+        Route::post('promo/add','PromosiController@add');
         Route::post('edit/kategori','KategoriController@edit')->name('editkategori');
         Route::get('edit/kategori/view/{id}','KategoriController@editview');
         Route::get('hapus/kategori/{id}','KategoriController@delete');

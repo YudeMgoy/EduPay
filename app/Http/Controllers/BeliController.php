@@ -235,10 +235,12 @@ class BeliController extends Controller
 
     public function riwayat(){
         $data = Transaksi::where('pembeli_id',Auth::user()->id)
-                        ->where('status',1)
-                        ->orWhere('status',2)
-                        ->orWhere('status',3)
-                        ->orWhere('status',4)
+                            ->where(function ($query) {
+                                $query->where('status',1)
+                            ->orwhere('status',2)
+                            ->orwhere('status',3)
+                            ->orwhere('status',4);
+                             })
                         ->orderBy('created_at', 'DESC')
                         ->get();
 
@@ -254,7 +256,7 @@ class BeliController extends Controller
         $data->status = 4;
         $data->save();
         
-        return redirect()->back();
+        return redirect(url('riwayat'));
 
     }
     public function terima($id){
@@ -262,7 +264,7 @@ class BeliController extends Controller
         $data->status = 3;
         $data->save();
         
-        return redirect()->back();
+        return redirect(url('riwayat'));
     }
 
     public function hapusTransaksi($id){

@@ -93,7 +93,7 @@
                         <p class="{{$transaksi->get_status->style}}">{{ $transaksi->get_status->status }}</p>
                     </div>
                     <div class="status">
-                        <p>WA : {{ $transaksi->no_wa }}</p>
+                        <p>WA : <a href="https://api.whatsapp.com/send?phone={{Str::replaceFirst('0', '62', $transaksi->no_wa)}}&text=Halo%20{{$transaksi->get_barang->name}}%20Yang%20Terhormat%20Silahkan%20ambil%20Pesanan">{{ $transaksi->no_wa }}</a></p>
                     </div>
                     <div class="status">
                         <p>Tempat : {{ $transaksi->alamat_kelas}}</p>
@@ -107,7 +107,7 @@
                     @elseif ($transaksi->status ==3)
                         <a href="#" class="text-success">Selesai</a>   
                     @elseif($transaksi->status == 4)
-                        <a href="{{url('dikemas')}}/{{$transaksi->id}}" class="text-danger">Hapus</a>
+                        <a href="{{url('hapus/transaksi')}}/{{$transaksi->id}}" class="text-danger">Hapus</a>
                     @endif
                 </div>
             </div>

@@ -21,6 +21,10 @@
                             <p style="font-size: 0.9em">Total</p>
                             <p style="margin: auto !important;margin-right: 0 !important;font-size: 0.9em;">Rp {{number_format($item->total_harga, 2,',','.')}}<p>
                         </div>
+                        <div class="bayar-box" style="margin-top: 5px;">
+                            <p style="font-size: 0.9em">Tempat</p>
+                            <p style="margin: auto !important;margin-right: 0 !important;font-size: 0.9em;">{{$item->alamat_kelas}}<p>
+                        </div>
                         <p class="date">{{$item->created_at->diffForHumans()}}</p>                 
                     </div>                                        
                 </div>

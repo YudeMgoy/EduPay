@@ -29,10 +29,12 @@
                         <a href="{{url('delete/item')}}/{{$item->id}}" class="orange">Hapus</a>
                     </td>
                 </tr>
-            @endforeach                     
+            @endforeach                    
         </tbody>
+
             <td colspan="3" onclick="showModul()" style="text-align:center"><a class="btn button" href="#">+ TAMBAH BARANG</a></td>    
-        </table>        
+        </table>
+        {{$barang->links()}}         
     </div>
 
     <div class="form modul" id="beli-modul">            

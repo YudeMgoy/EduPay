@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Transaksi;
 use Auth;
+use Carbon\Carbon;
 class GudangController extends Controller
 {
     public function index(){
@@ -16,10 +17,17 @@ class GudangController extends Controller
             return view('gudang.gudanglist',compact('transaksis'));
         } else {
         $transaksis = Transaksi::where('id_gudang',NULL)
-                            ->where('status',1)
+                            ->whereDate('created_at', '=', Carbon::today()->toDateString())
+                            // ->orwhere('status',1)
+                            // ->orwhere('status',2)
+                            // ->orwhere('status',3)
+                            // ->orwhere('status',4)
+                            ->where(function ($query) {
+                                $query->where('status',1)
                             ->orwhere('status',2)
                             ->orwhere('status',3)
-                            ->orwhere('status',4)
+                            ->orwhere('status',4);
+                             })
                             ->with('get_barang')
                             ->with('get_keranjang')
                             ->with('get_pay')

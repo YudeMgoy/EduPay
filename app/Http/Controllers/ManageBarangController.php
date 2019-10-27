@@ -27,7 +27,7 @@ class ManageBarangController extends Controller
     }
     public function index(){
         $data = kategori::all();
-        $list = listBarang::all();
+        $list = listBarang::paginate(20);
         $satuan = satuan::all();
         return view('admin.listbarang',[
             'barang' => $list,
