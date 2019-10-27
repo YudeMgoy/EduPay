@@ -95,10 +95,10 @@ class BeliController extends Controller
 
     public function DeleteListBarang($id)
     {
-        session()->flash('status', 'Barang Di Hapus');
         $all = Keranjang::find($id);
         $all->delete();
         return redirect(url('keranjang'));
+        session()->flash('status', 'Barang Di Hapus');
     }
 
     public function Prosess(Request $req)
@@ -267,12 +267,16 @@ class BeliController extends Controller
         return redirect(url('riwayat'));
     }
 
+    
     public function hapusTransaksi($id){
-
-        $data = Transaksi::find($id);
-        $data->status = 5;
-        $data->save();
-
-        return redirect(url('riwayat'));
+    $data = Transaksi::find($id);
+    $data->status = 5;
+    $data->save();
+        if(Auth::user()->role != 2){
+            return redirect()->back();
+        }
+        else{
+            return redirect(url('riwayat'));
+        }
     }
 }

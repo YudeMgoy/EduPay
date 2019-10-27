@@ -17,6 +17,7 @@ Auth::routes();
 Route::get('logout','HomeController@logout');
 
 Route::middleware('auth')->group(function(){
+    Route::get('promo/{id}','PromosiController@detail');
     Route::post('ganti/password','AkunController@changePassword');
     Route::post('ganti/nama','AkunController@gantiNama');
     Route::get('/','HomeController@index');
@@ -37,7 +38,6 @@ Route::middleware('auth')->group(function(){
     Route::get('detail/pesanan/{id}','BeliController@detailprosess');
     Route::get('detail/barang/{id}', 'BeliController@detailBarang');
     Route::get('riwayat','BeliController@riwayat');
-    Route::view('promo/{id}', 'public.detailpromo');
     Route::get('terima/barang/{id}','BeliController@terima');
     Route::get('batal/beli/{id}','BeliController@cencelBeli');
     Route::get('hapus/transaksi/{id}','BeliController@hapusTransaksi');
@@ -54,8 +54,11 @@ Route::view('lupa', 'public.lupa');
 
 Route::middleware('auth')->group(function(){
     Route::middleware('CekRole')->group(function(){
-        Route::get('promo/list','PromosiController@index');
+        Route::get('promosi','PromosiController@index');
         Route::post('promo/add','PromosiController@add');
+        Route::get('promo/hapus/{id}','PromosiController@delete');
+        Route::get('promo/edit/{id}','PromosiController@show');
+        Route::post('promo/edit','PromosiController@edit')->name('editpromo');
         Route::post('edit/kategori','KategoriController@edit')->name('editkategori');
         Route::get('edit/kategori/view/{id}','KategoriController@editview');
         Route::get('hapus/kategori/{id}','KategoriController@delete');
@@ -71,7 +74,7 @@ Route::middleware('auth')->group(function(){
         Route::post('edit/item','ManageBarangController@edit')->name('editbarang');
         Route::get('edit/view/{id}','ManageBarangController@editview');
     });
-    Route::middleware('isGudang')->group(function(){
+        Route::middleware('isGudang')->group(function(){
         Route::get('barang/kosong/{id}','KosongController@kosong');
         Route::post('edit/stock','KosongController@edit');
         Route::get('dikirim/{id}','GudangController@dikirim');

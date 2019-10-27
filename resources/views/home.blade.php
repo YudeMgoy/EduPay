@@ -22,15 +22,11 @@
     <div class="promo-container">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
+                @foreach ($promos as $promo)
                 <div class="carousel-item active">
-                    <a href="{{url('promo/1')}}"><img class="d-block w-100" src="https://i1.wp.com/www.payfazz.com/wp-content/uploads/2019/09/BLOG-Shopfazz-Kejar-Untung-Cashback.jpg?fit=1201%2C628&ssl=1" alt="First slide"></a>
+                    <a href="{{url('promo')}}/{{$promo->id}}"><img class="d-block w-100" src="{{asset($promo->cover)}}" alt="First slide"></a>
                 </div>
-                <div class="carousel-item">
-                    <a href="{{url('promo/1')}}"><img class="d-block w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu6P0UJ5b0LUnb76M_gtUbDwtRtC4hNgigh15yWz2c_6pUUj6PQA" alt="Second slide"></a>
-                </div>
-                <div class="carousel-item">
-                    <a href="{{url('promo/1')}}"><img class="d-block w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDY6OCeHqw5PleQRCmiUVUWkQEJovZVhRabKdqQbfVwxOMguwt" alt="Third slide"></a>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -90,7 +86,7 @@
             <div class="barang-wrapper">
                 <div class="barang-header">
                     <h4>{{$row->kategori}}</h4>
-                    <a href="{{url('list/barang')}}/{{$row->int}}" class="lihat">Lihat Semua</a>
+                    <a href="{{url('list/barang')}}/{{$row->id}}" class="lihat">Lihat Semua</a>
                 </div>
                 <div class="barang-list">
                     @foreach ($row->get_barang_data->take(5) as $data)

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\listBarang;
 use App\kategori;
+use App\Promo;
 class HomeController extends Controller
 {
     /**
@@ -28,6 +29,7 @@ class HomeController extends Controller
         $data = listBarang::paginate(5);
         $kategori = kategori::all(); 
         $sembako = ListBarang::where('kategori',1)->paginate(5);
+        $promos = promo::all();
         if (Auth::user()) {
             if(Auth::user()->role==1){
                 return redirect('view/all/barang');
@@ -40,7 +42,8 @@ class HomeController extends Controller
             return view('home',[
                 'list'=> $data,
                 'sembako'=> $sembako,
-                'kategori'=> $kategori
+                'kategori'=> $kategori,
+                'promos'=> $promos
             ]);            
         } else {
             return view('auth.login');

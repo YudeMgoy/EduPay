@@ -88,9 +88,9 @@
                     <div class="form-box cod" id="cod">
                         <label for="">Ketemuan Dimana</label>
                         <select name="alamat_kelas" id="">
-                            <option value="Lapangan Volly">Lapangan Voly</option>
-                            <option value="Perpustakaan">Perpus</option>
-                            <option value="Lapangan Basket">Lapangan Basket</option>
+                            {{-- <option value="Lapangan Volly">Lapangan Voly</option>
+                            <option value="Perpustakaan">Perpus</option> --}}
+                            <option value="Lapangan Basket">Lapangan Basket Sebelah Utara</option>
                         </select>
                     </div>
                     <div class="form-box cod">

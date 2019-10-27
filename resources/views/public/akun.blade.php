@@ -22,7 +22,7 @@
     <div class="bottom-container">
         @if (Auth::user()->role == 1)
         <div class="bottom-box">
-            <a href="{{url('promo/add')}}">Promo</a>       
+            <a href="{{url('promosi')}}">Promo</a>       
         </div>
         <div class="bottom-box">
             <a href="{{url('kategori/view')}}">Kategori</a>       
