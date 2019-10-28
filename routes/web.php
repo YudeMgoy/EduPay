@@ -54,6 +54,8 @@ Route::view('lupa', 'public.lupa');
 
 Route::middleware('auth')->group(function(){
     Route::middleware('CekRole')->group(function(){
+        Route::get('kosong/item/{id}','ManageBarangController@tidakAda');
+        Route::get('ada/{id}','ManageBarangController@ada');
         Route::get('promosi','PromosiController@index');
         Route::post('promo/add','PromosiController@add');
         Route::get('promo/hapus/{id}','PromosiController@delete');

@@ -25,8 +25,9 @@
                     <th scope="row">{{$loop->iteration}}</th>
                     <td>{{$item->nama_barang}}</td>
                     <td>
-                        <a href="{{url("edit/view/$item->id")}}"class="orange">Edit</a>
-                        <a href="{{url('delete/item')}}/{{$item->id}}" class="orange">Hapus</a>
+                        <a href="{{url("edit/view/$item->id")}}"class="orange">Edit</a>|
+                        <a href="{{url('delete/item')}}/{{$item->id}}" class="orange">Hapus</a>|
+                        <a href="{{url('kosong/item')}}/{{$item->id}}" class="orange">Kosong</a>
                     </td>
                 </tr>
             @endforeach                    
@@ -35,6 +36,34 @@
             <td colspan="3" onclick="showModul()" style="text-align:center"><a class="btn button" href="#">+ TAMBAH BARANG</a></td>    
         </table>
         {{$barang->links()}}         
+    </div>
+
+    <table class="table">
+                @if (session()->has('status'))
+                    <div class="alert alert-success">
+                        <strong>Success!</strong> {{session('status')}}
+                    </div>                        
+                @endif
+            <h4>Barang yang kosong</h4>
+        <thead class="bg-orange">
+            <tr>
+            <th scope="col">No</th>
+            <th scope="col">Nama Barang</th>
+            <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($kosong as $item)
+                <tr>
+                    <th scope="row">{{$loop->iteration}}</th>
+                    <td>{{$item->nama_barang}}</td>
+                    <td>
+                        <a href="{{url('ada')}}/{{$item->id}}" class="orange">Adakan Stok</a>
+                    </td>
+                </tr>
+            @endforeach                    
+        </tbody>
+        </table>      
     </div>
 
     <div class="form modul" id="beli-modul">            

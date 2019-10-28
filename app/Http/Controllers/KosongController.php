@@ -13,6 +13,9 @@ class KosongController extends Controller
 {
     public function kosong($id){
         $keranjang = keranjang::find($id);
+        $barang = listbarang::find($keranjang->id_barang);
+        $barang->stok = 1;
+        $barang->save();
         $transaksi = transaksi::findOrFail($keranjang->transaksi_id);
         if($keranjang->jumlah_barang <= 1){
             $transaksi->total_harga -= ($keranjang->get_barang->harga_barang - $keranjang->get_barang->diskon);
@@ -38,6 +41,8 @@ class KosongController extends Controller
         $barang = listBarang::find($keranjang->id_barang);
         $transaksi = transaksi::find($keranjang->transaksi_id);
         if($req->jumlah_stock == 0){
+        $barang->stok = 1;
+        $barang->save();
             $transaksi->total_harga -= ($barang->harga_barang - $barang->diskon) * ( $keranjang->jumlah_barang - $req->jumlah_stock);
             if($transaksi->paymen == 1){
                 $user = user::find($transaksi->pembeli_id);
@@ -57,7 +62,7 @@ class KosongController extends Controller
         if($transaksi->paymen == 1){
             $user = User::find($transaksi->pembeli_id);
             $user->saldo += ($barang->harga_barang - $barang->diskon) * ( $keranjang->jumlah_barang - $req->jumlah_stock);
-            $user->save(); 
+            $user->save();
         }
         $transaksi->total_harga -= ($barang->harga_barang - $barang->diskon) * ( $keranjang->jumlah_barang - $req->jumlah_stock);
         $transaksi->save();

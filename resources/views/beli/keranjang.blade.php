@@ -91,6 +91,7 @@
                             {{-- <option value="Lapangan Volly">Lapangan Voly</option>
                             <option value="Perpustakaan">Perpus</option> --}}
                             <option value="Lapangan Basket">Lapangan Basket Sebelah Utara</option>
+                            <option value="Lapangan Reseptionis">Reseptionis</option>
                         </select>
                     </div>
                     <div class="form-box cod">

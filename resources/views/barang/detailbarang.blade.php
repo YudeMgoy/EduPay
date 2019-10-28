@@ -3,7 +3,20 @@
 @section('content')
 
     <nav class="bottom-nav">
+        @if ($barang->stok != NULL)
         <form action="{{url("add/keranjang/$barang->id")}}" method="POST">
+        <div class="nav-list">            
+                @csrf
+                <div class="nav-box no-padding">
+                    <input type="number" name="jumlah_barang" placeholder="Jumlah" disabled>
+                </div>                
+                <div class="no-padding">
+                    <button class="button" disabled>Habis</button>
+                </div>                            
+        </div>
+    </form>
+        @else
+    <form action="{{url("add/keranjang/$barang->id")}}" method="POST">
         <div class="nav-list">            
                 @csrf
                 <div class="nav-box no-padding">
@@ -14,6 +27,7 @@
                 </div>                            
         </div>
     </form>
+        @endif
     </nav>
     <div class="detail-container">
         @if ($barang->diskon == NULL)

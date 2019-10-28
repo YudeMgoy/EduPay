@@ -26,13 +26,15 @@ class ManageBarangController extends Controller
         ]);
     }
     public function index(){
+        $kosong = listBarang::where('stok','!=',NUll)->get();
         $data = kategori::all();
         $list = listBarang::paginate(20);
         $satuan = satuan::all();
         return view('admin.listbarang',[
             'barang' => $list,
             'kategori'=> $data,
-            'satuan' => $satuan
+            'satuan' => $satuan,
+            'kosong'=>$kosong
         ]);
     }
 
@@ -129,5 +131,24 @@ class ManageBarangController extends Controller
             'data' => $data,
             'satuan' => $satuan
         ]);
+    }
+    public function ada($id){
+
+        $data = listbarang::findOrFail($id);
+        $data->stok = NULL;
+        $data->save();
+
+        return redirect()->back()->with('status','Stock telah ada');
+
+    }
+
+    public function tidakAda($id){
+
+        $data = listbarang::findOrFail($id);
+        $data->stok = 1;
+        $data->save();
+
+        return redirect()->back()->with('status','Stock Kosong');
+
     }
 }
