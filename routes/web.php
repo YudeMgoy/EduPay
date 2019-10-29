@@ -76,6 +76,11 @@ Route::middleware('auth')->group(function(){
         Route::get('delete/item/{id}','ManageBarangController@hapus');
         Route::post('edit/item','ManageBarangController@edit')->name('editbarang');
         Route::get('edit/view/{id}','ManageBarangController@editview');
+        Route::get('satuan/all','SatuanController@index');
+        Route::get('satuan/edit/{id}','SatuanController@editview');
+        Route::get('satuan/hapus/{id}','SatuanController@delete');
+        Route::post('add/satuan','SatuanController@add');
+        Route::post('edit/satuan','SatuanController@edit')->name('editsatuan');
     });
         Route::middleware('isGudang')->group(function(){
         Route::get('barang/kosong/{id}','KosongController@kosong');
