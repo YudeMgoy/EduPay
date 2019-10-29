@@ -10,8 +10,8 @@
 @section('content')
     <div class="top-container">
         <div class="img-box">
-            <img src="{{Auth::user()->img}}" alt="" class="bg-image">
-            <img src="{{Auth::user()->img}}" alt="">
+            <img src="{{asset(Auth::user()->img)}}" alt="" class="bg-image">
+            <img src="{{asset(Auth::user()->img)}}" alt="">
         </div>
 
         <h4>{{Auth::user()->name}}</h4>

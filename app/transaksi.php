@@ -10,7 +10,7 @@ class transaksi extends Model
    		return $this->belongsto('App\User','pembeli_id');
 	}
 	public function get_keranjang(){
-    	return $this->hasMany('App\Keranjang','transaksi_id');
+    	return $this->hasMany('App\keranjang','transaksi_id');
 	}
 	public function get_pay(){
    		return $this->belongsTo('App\pay','paymen');

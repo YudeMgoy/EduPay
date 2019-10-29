@@ -38,6 +38,6 @@ class User extends Authenticatable
     ];
 
     public function get_transaksi(){
-    	return $this->hasmany('\App\Transaksi','id');
+    	return $this->hasmany('\App\transaksi','id');
     }
 }

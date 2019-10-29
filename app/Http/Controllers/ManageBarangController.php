@@ -134,7 +134,7 @@ class ManageBarangController extends Controller
     }
     public function ada($id){
 
-        $data = listbarang::findOrFail($id);
+        $data = listBarang::findOrFail($id);
         $data->stok = NULL;
         $data->save();
 
@@ -144,7 +144,7 @@ class ManageBarangController extends Controller
 
     public function tidakAda($id){
 
-        $data = listbarang::findOrFail($id);
+        $data = listBarang::findOrFail($id);
         $data->stok = 1;
         $data->save();
 

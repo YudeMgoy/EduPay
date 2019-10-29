@@ -6,17 +6,17 @@ use Illuminate\Http\Request;
 use App\keranjang;
 use Auth;
 use App\listBarang;
-use App\Transaksi;
+use App\transaksi;
 use App\User;
 use App\pay;
-use App\Kategori;
+use App\kategori;
 
 
 class BeliController extends Controller
 {
 
     public function listBarang(){
-        $keranjang = Keranjang::where('transaksi_id', NULL)
+        $keranjang = keranjang::where('transaksi_id', NULL)
                                 ->where('pembeli_id', Auth::user()->id)
                                 ->get();
         $list = ListBarang::all();
@@ -30,7 +30,7 @@ class BeliController extends Controller
     }
     public function listkategori($id){
         $data = ListBarang::where('kategori',$id)->get();
-        $kategori = Kategori::find($id)->kategori;
+        $kategori = kategori::find($id)->kategori;
         return view('beli.listbarang',[
             'lists' => $data,
             'kategori' => $kategori
@@ -43,13 +43,13 @@ class BeliController extends Controller
         ]);
 
         $barang = listBarang::find($req->id);
-        $check = Keranjang::where('id_barang', $barang->id)
+        $check = keranjang::where('id_barang', $barang->id)
                             ->where('pembeli_id',Auth::user()->id)
                             ->where('transaksi_id', NULL)
                             ->get();
         if(count($check)>0)
         {
-            $keranjang = Keranjang::where('id_barang', $barang->id)
+            $keranjang = keranjang::where('id_barang', $barang->id)
                                 ->where('pembeli_id',Auth::user()->id)
                                 ->first();
             $keranjang->jumlah_barang += $req->jumlah_barang;
@@ -58,7 +58,7 @@ class BeliController extends Controller
             $keranjang->update();
         }
         else{
-            $keranjang = new Keranjang;
+            $keranjang = new keranjang;
             $keranjang->id_barang = $barang->id;
             $keranjang->jumlah_barang = $req->jumlah_barang;
             $keranjang->harga_barang = $req->jumlah_barang * ($barang->harga_barang - $barang->diskon);            
@@ -74,7 +74,7 @@ class BeliController extends Controller
             session()->flash('error', 'Kalau Beli minimal 1 LOL');
             return redirect(url('keranjang'));
         }
-        $keranjang = Keranjang::find($req->id);
+        $keranjang = keranjang::find($req->id);
         $barang = listBarang::find($keranjang->id_barang);
         $keranjang->jumlah_barang = $req->jumlah_barang;
         $keranjang->harga_barang = ($barang->harga_barang - $barang->diskon) * $req->jumlah_barang; 
@@ -84,18 +84,40 @@ class BeliController extends Controller
         return redirect(url('keranjang'));
 
     }
-    public function CancelBeli(){
+    public function CancelBeli($id){
 
-        Keranjang::where('pembeli_id', Auth::user()->id)
-                ->where('transaksi_id', NULL)
-                ->delete();
+       $data = keranjang::where('pembeli_id', Auth::user()->id)
+                ->where('transaksi_id', NULL)->delete();
+
+
 
         return redirect(url('list/barang'));  
+    }
+    public function DeleteBeli($id){
+        
+        $data = transaksi::findOrFail($id);
+        $user = User::find($data->pembeli_id);
+                if ($data->status == 2) {
+                    
+                    return redirect()->back()->with('error','Pesanan Tidak Bisa di batalkan Karena sudah di Perjalanan');
+                } else {
+                    
+                    $data->status = 5;
+                    if($data->paymen == 1){
+                        $user->saldo += $data->total_harga;
+                        $user->save();
+                        
+                    }
+                    $data->save();
+                    return redirect(url('riwayat'))->with('status','Pesanan Di Cancel');
+                }
+                
+        
     }
 
     public function DeleteListBarang($id)
     {
-        $all = Keranjang::find($id);
+        $all = keranjang::find($id);
         $all->delete();
         return redirect(url('keranjang'));
         session()->flash('status', 'Barang Di Hapus');
@@ -106,7 +128,7 @@ class BeliController extends Controller
         $length = 5;
         $randstring = substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
 
-        $keranjangs = Keranjang::where('pembeli_id', Auth()->user()->id)
+        $keranjangs = keranjang::where('pembeli_id', Auth()->user()->id)
                                 ->where('transaksi_id', NULL)
                                 ->get();
 
@@ -132,7 +154,7 @@ class BeliController extends Controller
                 $pembeli = Auth::user();
                 $pembeli->saldo -= $total_harga;
                 $pembeli->save();
-                $transaksi = new Transaksi;
+                $transaksi = new transaksi;
                 $transaksi->pembeli_id = Auth::user()->id;
                 $transaksi->paymen = $req->pay;
                 $transaksi->alamat_kelas = $req->alamat_kelas;
@@ -141,7 +163,7 @@ class BeliController extends Controller
                 $transaksi->id_transaksi =  $randstring;     
                 $transaksi->total_harga = $total_harga;
                 $transaksi->save();
-                $transaksi2 = Transaksi::where('pembeli_id', Auth::user()->id)
+                $transaksi2 = transaksi::where('pembeli_id', Auth::user()->id)
                                         ->orderBy('id', 'DESC')->first();
                 for ($i=0;$i<count($keranjangs);$i++)
                 {            
@@ -152,7 +174,7 @@ class BeliController extends Controller
         }
         else{
 
-                $transaksi = new Transaksi;
+                $transaksi = new transaksi;
                 $transaksi->pembeli_id = Auth::user()->id;
                 $transaksi->paymen = $req->pay;
                 $transaksi->alamat_kelas = $req->alamat_kelas;
@@ -161,7 +183,7 @@ class BeliController extends Controller
                 $transaksi->id_transaksi =  $randstring;     
                 $transaksi->total_harga = $total_harga;
                 $transaksi->save();
-                $transaksi2 = Transaksi::where('pembeli_id', Auth::user()->id)
+                $transaksi2 = transaksi::where('pembeli_id', Auth::user()->id)
                                         ->orderBy('id', 'DESC')->first();
                 for ($i=0;$i<count($keranjangs);$i++)
                 {            
@@ -184,7 +206,7 @@ class BeliController extends Controller
     }
     public function IsiKeranjang(){
         $bayar = pay::all();
-        $keranjang = Keranjang::where('pembeli_id',Auth::user()->id)
+        $keranjang = keranjang::where('pembeli_id',Auth::user()->id)
                                 ->where('transaksi_id',NULL)
                                 ->get();
         $total_harga = 0;
@@ -200,7 +222,7 @@ class BeliController extends Controller
         ]);
     }
     public function listPesan(){
-        $data = Transaksi::where('pembeli_id',Auth::user()->id)
+        $data = transaksi::where('pembeli_id',Auth::user()->id)
                         ->orderBy('created_at', 'DESC')
                         ->get();
 
@@ -210,7 +232,7 @@ class BeliController extends Controller
         ]);
     }
     public function detailprosess($id){
-        $data = Transaksi::find($id);
+        $data = transaksi::find($id);
 
         return view('beli.transaksi',[
             'detail'=> $data
@@ -234,7 +256,7 @@ class BeliController extends Controller
     }
 
     public function riwayat(){
-        $data = Transaksi::where('pembeli_id',Auth::user()->id)
+        $data = transaksi::where('pembeli_id',Auth::user()->id)
                             ->where(function ($query) {
                                 $query->where('status',1)
                             ->orwhere('status',2)
@@ -260,7 +282,7 @@ class BeliController extends Controller
 
     }
     public function terima($id){
-        $data = Transaksi::find($id);
+        $data = transaksi::find($id);
         $data->status = 3;
         $data->save();
         
@@ -269,7 +291,7 @@ class BeliController extends Controller
 
     
     public function hapusTransaksi($id){
-    $data = Transaksi::find($id);
+    $data = transaksi::find($id);
     $data->status = 5;
     $data->save();
         if(Auth::user()->role != 2){

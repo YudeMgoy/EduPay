@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Transaksi;
+use App\transaksi;
 use Auth;
 use Carbon\Carbon;
 class GudangController extends Controller
 {
     public function index(){
         if (Auth::user()->role == 4) {
-            $transaksis = Transaksi::where('status',1)
+            $transaksis = transaksi::where('status',1)
                         ->orderBy('created_at', 'DESC')
                         ->get();
             
             return view('gudang.gudanglist',compact('transaksis'));
         } else {
-        $transaksis = Transaksi::where('id_gudang',NULL)
+        $transaksis = transaksi::where('id_gudang',NULL)
                             ->whereDate('created_at', '=', Carbon::today()->toDateString())
                             // ->orwhere('status',1)
                             // ->orwhere('status',2)
@@ -42,7 +42,7 @@ class GudangController extends Controller
 
     public function dikemas($id){
 
-        $data = Transaksi::find($id);
+        $data = transaksi::find($id);
         $data->status = 1;
         $data->id_gudang = Auth::user()->id;
 
@@ -52,7 +52,7 @@ class GudangController extends Controller
 
     public function dikirim($id){
 
-        $data = Transaksi::find($id);
+        $data = transaksi::find($id);
         $data->status = 2;
 
         $data->save();
@@ -61,7 +61,7 @@ class GudangController extends Controller
 
     }
     public function cencel(){
-        $data = Transaksi::find($id);
+        $data = transaksi::find($id);
         $data->delete();
         session()->flash('status', 'Pesanan di Hapus');
         return redirect()->back();

@@ -8,6 +8,6 @@ class pay extends Model
 {
     public function get_pay_data(){
 
-    	return $this->belongsTo('\App\Transaksi','int');
+    	return $this->belongsTo('\App\transaksi','int');
     }
 }

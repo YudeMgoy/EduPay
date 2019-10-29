@@ -5,15 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\keranjang;
-use App\listbarang;
+use App\listBarang;
 use App\transaksi;
-use App\user;
+use App\User;
 
 class KosongController extends Controller
 {
     public function kosong($id){
         $keranjang = keranjang::find($id);
-        $barang = listbarang::find($keranjang->id_barang);
+        $barang = listBarang::find($keranjang->id_barang);
         $barang->stok = 1;
         $barang->save();
         $transaksi = transaksi::findOrFail($keranjang->transaksi_id);
@@ -37,7 +37,7 @@ class KosongController extends Controller
     }
 
     public function edit(Request $req){
-        $keranjang = Keranjang::find($req->id_keranjang);
+        $keranjang = keranjang::find($req->id_keranjang);
         $barang = listBarang::find($keranjang->id_barang);
         $transaksi = transaksi::find($keranjang->transaksi_id);
         if($req->jumlah_stock == 0){

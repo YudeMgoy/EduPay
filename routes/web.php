@@ -39,7 +39,8 @@ Route::middleware('auth')->group(function(){
     Route::get('detail/barang/{id}', 'BeliController@detailBarang');
     Route::get('riwayat','BeliController@riwayat');
     Route::get('terima/barang/{id}','BeliController@terima');
-    Route::get('batal/beli/{id}','BeliController@cencelBeli');
+    Route::get('batal/beli','BeliController@cencelBeli');
+    Route::get('delete/beli/{id}','BeliController@DeleteBeli');
     Route::get('hapus/transaksi/{id}','BeliController@hapusTransaksi');
     Route::view('pengaturan', 'public.pengaturan');
 });

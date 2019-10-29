@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Promo;
+use App\promo;
 use Auth;
 class PromosiController extends Controller
 {
     public function index(){
-        $banner = Promo::all();
+        $banner = promo::all();
 
         return view('admin.listpromo',compact('banner'));
     }
@@ -33,7 +33,7 @@ class PromosiController extends Controller
         $dir = "upload/img/";
         $upload = $file->move($dir, $newName);
 
-        $promos = new Promo();
+        $promos = new promo();
         $promos->cover = $dir.$newName;
         $promos->judul = $req->judul;
         $promos->user_id = Auth::user()->id;
@@ -48,7 +48,7 @@ class PromosiController extends Controller
 
     }
     public function show($id){
-        $promo = Promo::findOrfail($id);
+        $promo = promo::findOrfail($id);
 
         return view('admin.editpromo',compact('promo'));
     }

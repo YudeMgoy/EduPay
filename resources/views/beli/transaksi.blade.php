@@ -22,6 +22,16 @@
     <h3 class="title">
         Transaksi
     </h3>
+                @if (session()->has('error'))
+                    <div class="alert alert-danger">
+                        <strong>error!</strong> {{session('error')}}
+                    </div>                        
+                @endif
+                @if (session()->has('status'))
+                    <div class="alert alert-success">
+                        <strong>Success!</strong> {{session('status')}}
+                    </div>                        
+                @endif
     <div class="keranjang-container">
         @foreach ($detail->get_keranjang as $data)
         <div class="keranjang-box">            

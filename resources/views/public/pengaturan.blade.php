@@ -41,8 +41,8 @@
             </div>
 
             <div class="profil-box">
-                <img src="{{Auth::user()->img}}" alt="" class="bg-image">
-                <img src="{{Auth::user()->img}}" alt="">
+                <img src="{{asset(Auth::user()->img)}}" alt="" class="bg-image">
+                <img src="{{asset(Auth::user()->img)}}" alt="">
             </div>
 
             <div class="form-box cod">

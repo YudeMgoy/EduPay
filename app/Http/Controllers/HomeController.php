@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\listBarang;
 use App\kategori;
-use App\Promo;
+use App\promo;
 class HomeController extends Controller
 {
     /**

@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Kategori;
+use App\kategori;
 
 class KategoriController extends Controller
 {
     public function index(){
-        $kategori = Kategori::all();
+        $kategori = kategori::all();
 
         return view('admin.listkategori',compact('kategori'));
     }
@@ -22,18 +22,18 @@ class KategoriController extends Controller
         return redirect()->back();
     }
     public function delete($id){
-        $kategori = Kategori::findOrFail($id);
+        $kategori = kategori::findOrFail($id);
         $kategori->delete();
 
         return redirect()->back();
     }
     public function editview($id){
-        $kategori = Kategori::findOrFail($id);
+        $kategori = kategori::findOrFail($id);
 
         return view('admin.editkategori',compact('kategori'));
     }
     public function edit(Request $req){
-        $kategori = Kategori::findOrFail($req->id);
+        $kategori = kategori::findOrFail($req->id);
 
         $kategori->kategori = $req->kategori;
         $kategori->update();
